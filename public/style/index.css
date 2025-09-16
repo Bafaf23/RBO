@@ -7,7 +7,7 @@
     --txtdos: #ffffff;
     --txtc: #353434;
    --txtsub: #5a5656;
-    --hoverb: #02096e;
+    --hoverb: #34d1e6;
 }
 
 .bar{
@@ -337,4 +337,8 @@ footer{
     flex-wrap: wrap;
     gap: 20px;
     color: var(--txtdos);
+}
+
+.vercion{
+    color: var(--txt);
 }
