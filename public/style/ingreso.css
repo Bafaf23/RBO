@@ -89,7 +89,7 @@
 }
 
 
-.forr::after{
+/**.forr::after{
     position: absolute;
     content: " ";
     width: 20%;
@@ -100,7 +100,7 @@
     border-bottom: 135px solid var(--fondoc);
     z-index: -1;
 
-}
+}**/
 
 .tiel-modal{
     text-transform: uppercase;
