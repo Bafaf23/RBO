@@ -1,15 +1,17 @@
-/* variablas */
-@use "utils/variables-color";
-
 
 @use "base/reset";
+
 @use "components/card";
 @use "components/menu-movil";
+@use "components/card-historial";
+
 @use "layout/header";
 @use "layout/linea";
 @use "layout/main";
 @use "layout/productos";
 @use "layout/welcome";
-@use "layout/resumenes"
+@use "layout/resumenes";
+
+@use "layout/footer"
 
 

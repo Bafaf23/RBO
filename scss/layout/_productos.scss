@@ -1,4 +1,12 @@
-.content-titel-section {
-  color: white;
-  font-size: 1.6rem;
+@use"./../utils/mixin" as mix;
+
+.productos{
+  @include mix.display(flex, stard, stard);
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+
+  .content-titel-section {
+    color: rgb(255, 255, 255);
+  }
 }

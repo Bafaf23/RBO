@@ -1,27 +1,28 @@
-@use "./../utils/variables-color" as u;
+@use "../utils/variables-color" as u;
+@use "../utils/mixin" as mix; 
 
 nav {
   background-color: u.$secondary-color;
-  border-radius: 0.5rem;
+  width: 100%;
+  
   ul {
-    display: flex;
-    justify-content: space-between;
+    @include mix.display(flex, space-between, stard);
     padding: 0.3rem;
+    font-size: 1.1rem;
 
     li {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 0.5rem;
-      color: white;
+      color: rgba(156, 156, 156, 0.719);
       border-radius: 0.5rem;
+      padding: 0.5rem;
 
       &:hover {
-        color: u.$tertiary-color;
+        color:white;
         background-color: rgba(192, 188, 188, 0.199);
       }
-      
     }
   }
 }

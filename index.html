@@ -3,20 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- CDN Tailwindg -->
+    <!-- TAILWINGcSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!--fontawesome CDN  -->
     <script
       src="https://kit.fontawesome.com/a74559d35e.js"
       crossorigin="anonymous"
     ></script>
-    <!-- Css externo -->
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="icon" href="media/RBO.png" />
-    <title>Rebus OE - Balance</title>
+    <!-- CSS animation -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>RBO</title>
   </head>
-  <body>
-    <div class="custom-shape-divider-top-1754052895">
+  <body
+    class="h-screen flex flex-col items-center justify-center p-1 gap-2 bg-[url(https://media.istockphoto.com/id/507623573/es/foto/los-edificios-perfilados-contra-el-horizonte-y-de-caracas.jpg?s=612x612&w=0&k=20&c=UblI5T3cwpa-cfoijgpGu_a1yHutvcXH2EcANQ_dgww=)] bg-cover"
+  >
+    <div class="custom-shape-divider-top-1765754165 relative z-0">
       <svg
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
@@ -29,82 +34,34 @@
         ></path>
       </svg>
     </div>
+    <div class="absolute top-4">
+      <h1 class="text-4xl text-white">
+        RB<span class="text-cyan-500">O</span>
+      </h1>
+    </div>
+    <div class="z-10 flex flex-col gap-2">
+      <h2 class="text-center text-white font-bold text-3xl">Inicia Secion</h2>
 
-    <header>
-      <div>
-        <img src="asset/img/RBO-removebg-preview.png" alt="Logo" />
-      </div>
-    </header>
-    <main>
-      <!-- wolcome -->
-      <section class="section-welcome">
-        <div class="wolcome">
-          <div class="avatar">
-            <p class="user">U</p>
-          </div>
-          <hr />
-          <h1>Hola, user</h1>
-        </div>
-        <hr class="bar-wolcome" />
-      </section>
-      <!-- productos -->
-      <section>
-        <div class="content-titel-section"><h2>Porductos</h2></div>
-        <div class="content-balance">
-          <div class="card">
-            <div class="titel-card">Saldo</div>
-            <div class="data-cuenta">
-              <div class="detalleCuanta">tipo de cuenta</div>
-              <div class="content-saldo">
-                <p id="saldo">100,00</p>
-                <sup>Bs</sup>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Menu movil -->
-      <nav>
-        <ul>
-          <li>
-            <span>
-              <i class="fa-solid fa-money-bill"></i>
-            </span>
-            Balance
-          </li>
-          <li>
-            <span>
-              <i class="fa-solid fa-angle-up"></i>
-            </span>
-            Ingreso
-          </li>
-          <li>
-            <span>
-              <i class="fa-solid fa-angle-down"></i>
-            </span>
-            Egreso
-          </li>
-          <li>
-            <span>
-              <i class="fa-solid fa-money-bill-transfer"></i>
-            </span>
-            Deuda
-          </li>
-        </ul>
-      </nav>
-      <!-- resuemenes -->
-      <section>
-        <h2 class="resumenes">Resumenes</h2>
-        <div class="content-resumenes">
-          <div class="content">d</div>
-          <div class="content">sd</div>
-          <div class="content">sdds</div>
-          <div class="content">sddsw</div>
-        </div>
-      </section>
-    </main>
+      <form
+        action="#"
+        class="flex flex-col p-5 rounded-md bg-white/20 backdrop-blur-md border border-white/10"
+      >
+        <label for="user">Usuario</label>
+        <input
+          type="text"
+          name="user"
+          placeholder="bafaf23"
+          class="border-b border-b-blue-800 p-1"
+        />
+        <label for="">Contrasena</label>
+        <input
+          type="text"
+          placeholder="*******"
+          class="border-b border-b-blue-800 p-1"
+        />
 
-    <script src="/app.js"></script>
-    <script src="js/index.js"></script>
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
   </body>
 </html>

@@ -1,40 +1,33 @@
+@use "./../utils/mixin" as mix;
+
 .card {
+  @include mix.display(flex, space-between, center);
+  gap: 10px;
   background-color: white;
   padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  border-radius: 0.5rem;
-  border: 1px solid rgb(199, 199, 199);
+  border-radius: 0.2rem;
+  border: 1px solid rgb(235, 232, 232);
 
-  .titel-card {
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
+  .info-card{
+    @include mix.display(flex, center, stard);
+    flex-direction: column;
+    gap: 0.3rem;
 
-  .data-cuenta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    .detalleCuanta {
-      color: gray;
+    .tipoCuenta{
       font-style: italic;
-    }
-
-    .content-saldo{
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      #saldo {
-        font-size: 1.6rem;
-        font-style: italic;
-      }
+      color: rgb(131, 129, 129);
     }
   }
 
-  &:hover {
-    cursor: pointer;
-    background-color: rgb(248, 246, 246);
+  .saldo{
+    @include mix.display(flex, stard, stard);
+    gap: 0.2rem;
+    color: rgb(63, 62, 62);
+
+    #saldo{
+      font-size: 1.8rem;
+      
+    }
   }
 }
 

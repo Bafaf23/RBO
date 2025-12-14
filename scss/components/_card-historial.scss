@@ -1,0 +1,47 @@
+@use "../utils/color-trasaccion" as color;
+@use "../utils/mixin" as mix;
+
+.card-historial{
+  @include mix.display(flex, space-between, center);
+  border: 1px solid;
+  padding: 0.7rem;
+  border-radius: 0.2rem;
+
+  .historial-info{
+    @include mix.display(flex, stard, stard);
+    flex-direction: column; 
+    gap: 0.3rem;
+
+    .tipoMovimiento{
+    font-style: italic
+    }
+  }
+
+  .historial-monto{
+    @include mix.display(flex, stard, stard);
+    gap: 0.3rem;
+
+ 
+
+    #monto{
+      font-size: 1.5rem;
+    }
+  }
+
+  &:hover{
+    transition: all 100ms;
+    transform: scale(1.02);
+  }
+}
+
+.egreso{
+  background-color: color.$egreso-bg;
+  border-color: color.$egreso-border;
+  color: color.$egreso-text;
+}
+
+.ingreso{
+  background-color: color.$ingreso-bg;
+  border-color: color.$ingreso-border;
+  color: color.$ingreso-text;
+}

@@ -1,2 +1,3 @@
-# Rebus
-Herramienta de gestión de finanzas mensuales. 
+# RBO
+
+Herramienta de gestión de finanzas mensuales.

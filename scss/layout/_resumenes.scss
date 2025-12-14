@@ -1,19 +1,23 @@
 @use "./../utils/variables-color" as u;
+@use"../utils/mixin" as mix;
 
-.resumenes{
-  color:u.$primary-color;
-  font-weight: bolder;
-  font-size: 25px;
-}
+.resuemenes{
+@include mix.display(flex, stard, stard);
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
 
-.content-resumenes{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  background-color: orange;
-
-  .content{
-    background-color: red;
+  .titel-resumen{
+    color:u.$primary-color;
+    font-weight: bolder;
+    font-size: 25px;
+  
+  }
+  
+  .content-resumenes{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }
 
