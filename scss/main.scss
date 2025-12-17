@@ -4,6 +4,10 @@
 @use "components/card";
 @use "components/menu-movil";
 @use "components/card-historial";
+@use"components/alert";
+
+@use"page/login";
+@use "page/register";
 
 @use "layout/header";
 @use "layout/linea";

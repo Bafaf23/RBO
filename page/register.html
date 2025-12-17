@@ -13,7 +13,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="./../css/main.css" />
     <title>RBO</title>
   </head>
   <body>
@@ -24,34 +24,42 @@
           <h2>RB<span class="styleO">O</span></h2>
         </div>
         <div class="wrapper-form">
-          <h2>Inicia Secion</h2>
+          <h2>Registrate</h2>
           <div class="content-label_input">
             <div class="label">
-              <label for="">Usuario</label>
+              <label for="">Nombre</label>
+              <input type="text" placeholder="Marcos" id="nameRegister" />
+              <label for="">Apellido</label>
+              <input type="text" placeholder="Peréz" id="lastNameRegister" />
+            </div>
+            <div class="label">
+              <label for="">Email</label>
               <input
                 type="email"
-                id="UserEmail"
-                placeholder="usuario@compani.com"
+                name=""
+                id="emailRegister"
+                placeholder="usuario@conpani.com"
               />
             </div>
             <div class="label">
               <label for="">Contrasena</label>
               <input
                 type="password"
-                name="user"
-                id="pasUser"
+                name=""
+                id="passwordRegister"
                 placeholder="********"
               />
             </div>
           </div>
 
           <div class="content-btn">
-            <button class="btn" id="loginBtn" type="submit">Entrar</button>
+            <button class="btn" type="submit" id="register">Registarme</button>
           </div>
-          <p>No tienes cuenta?, <a href="page/register.html">registrate</a></p>
+          <p>Ya tienes cuenta?, <a href="../index.html">inicia secion</a></p>
         </div>
       </form>
     </div>
-    <script type="module" src="js/src/login/login.js"></script>
+
+    <script type="module" src="../js/src/register/register.js"></script>
   </body>
 </html>

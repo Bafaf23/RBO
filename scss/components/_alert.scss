@@ -1,0 +1,23 @@
+.alert{
+  position:absolute;
+  top:20px;
+  right: 5px;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: white;
+  border-left: 1px solid blue;
+
+  .ico{
+    color: blue;
+    font-size: 2rem;
+  }
+
+  .info-alert{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
