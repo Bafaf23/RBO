@@ -160,7 +160,7 @@ a {
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .content-desktop {
-    width: 15%;
+    width: 17%;
   }
   .content-desktop .nav-desktop {
     display: flex;
@@ -266,7 +266,7 @@ a {
 .content-form .from .wrapper-form {
   display: flex;
   justify-content: center;
-  align-items: stard;
+  align-items: center;
   flex-direction: column;
   gap: 2rem;
   height: 100%;
@@ -277,6 +277,7 @@ a {
   align-items: stard;
   height: -moz-fit-content;
   height: fit-content;
+  width: 100%;
   flex-direction: column;
   gap: 1rem;
   padding: 0.7rem;
@@ -290,8 +291,7 @@ a {
   font-size: 1.2rem;
 }
 .content-form .from .wrapper-form .content-label_input .label input {
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   font-size: 1.2rem;
   padding: 0.2rem;
   outline: none;
@@ -302,6 +302,7 @@ a {
 .content-form .from .wrapper-form .content-btn {
   display: flex;
   justify-content: center;
+  width: 100%;
   margin-bottom: 0.5rem;
 }
 .content-form .from .wrapper-form .content-btn button {
@@ -322,12 +323,13 @@ a {
   .content-form {
     display: flex;
     justify-content: stard;
-    align-items: baseline;
+    align-items: end;
   }
   .content-form .from {
     position: absolute;
     top: 0;
     height: 100%;
+    width: 28%;
   }
 }
 .content-info {

@@ -14,10 +14,19 @@ const logoutBtnDes = document.getElementById("logoutBtnDes");
 
 (function checkAccess() {
   const session = JSON.parse(localStorage.getItem("userSession"));
+  const pathname = window.location.pathname;
 
+  const isPageLogin = pathname.includes(`index.html`) || pathname.endsWith("/");
   if (!session) {
-    // Si no hay sesión, volver al login
-    window.location.href = "../../index.html";
+    if (!isPageLogin) {
+      // Si no hay sesión, volver al login
+      window.location.href = "../../index.html";
+    }
+  } else {
+    //si hay sesion, no ir al login
+    if (isPageLogin) {
+      window.location.href = "page/dashboard.html";
+    }
   }
 })();
 
