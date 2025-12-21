@@ -28,7 +28,12 @@ converAdmin.addEventListener(`click`, () => {
   localStorage.setItem("userSession", JSON.stringify(user));
   localStorage.setItem("dataUsers", JSON.stringify(dataUsers));
 
-  window.location.reload();
+  if (user.admi === true) mesassege(`Ya eres Administrador`, `Administrador`);
+
+  if (user.admi === false) mesassege(`Ya no eres Administrador`, `Cliente`);
+  setTimeout(() => {
+    window.location.reload();
+  }, 2000);
 });
 
 let isAmin = user.admi;
