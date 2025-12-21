@@ -1,2 +1,15 @@
+#configuracion 
 .vscode
+
+#js no nesesarios
 js/deuda.js
+js/egreso.js
+js/index.js
+js/ingreso.js
+
+#archivos html sin terminar
+page/deuda.html
+page/egreso.html
+page/ingreso.html
+
+Final-JS-Project.txt
