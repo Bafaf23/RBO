@@ -1,5 +1,6 @@
 import { mesassege } from "../register/register.js";
 import { hashPassaword } from "../hash/hash.js";
+import { validacionInput, emailPattern } from "../regex/regex.js";
 
 let userData = JSON.parse(localStorage.getItem("dataUsers")) || [];
 
@@ -22,8 +23,13 @@ if (loginbtn) {
     if (emial === `` || pass === ``) {
       return mesassege(`Los campos no pueden estar vacios`, `Campos vacios`);
     }
+
     //buscando al usurio por el emal
     const user = userData.find((u) => u.email === emial);
+
+    if (!validacionInput(emial, emailPattern)) {
+      mesassege(`Formato de correo invalido`, `Correo`);
+    }
 
     //comoprovaciones
     if (!user) return mesassege(`El usuario no esta registrado`, `Registrate`);

@@ -1,0 +1,47 @@
+/* Fondo oscuro translúcido */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  z-index: 9;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(54, 53, 53, 0.5);
+  backdrop-filter: blur(5px); /* Efecto moderno de desenfoque */
+}
+
+/* Caja de la modal */
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: aparecer 0.3s ease; /* Animación de entrada */
+}
+
+/* Botón cerrar */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #888;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

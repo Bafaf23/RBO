@@ -73,7 +73,7 @@
               <h2>Registros</h2>
             </div>
             <div class="content-btn">
-              <button class="btn">
+              <button class="btn" id="openModal">
                 <span><i class="fa-solid fa-plus"></i></span>
                 agregar
               </button>
@@ -97,6 +97,64 @@
           <!-- tabla movil -->
           <div class="tabla-movil" id="tablaMovil"></div>
         </section>
+        <!-- modal -->
+        <!-- Estructura de la Modal -->
+        <div id="miModal" class="modal">
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Registra a un nuevo usurio</h2>
+            <form id="registroForm" class="form-zen">
+              <div class="input-group">
+                <label for="nombre">Nombre</label>
+                <input
+                  type="text"
+                  id="nombre"
+                  placeholder="Ej. Juan"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="apellido">Apellido</label>
+                <input
+                  type="text"
+                  id="apellido"
+                  placeholder="Ej. Pérez"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="email">Correo Electrónico</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="correo@ejemplo.com"
+                  required
+                />
+              </div>
+
+              <div class="input-group">
+                <label for="pass">Contraseña</label>
+                <input
+                  type="password"
+                  id="pass"
+                  placeholder="Mínimo 6 caracteres"
+                  required
+                />
+              </div>
+
+              <div class="input-group">
+                <label for="confirmPass">Confirmar Contraseña</label>
+                <input
+                  type="password"
+                  id="confirmPass"
+                  placeholder="Repite tu contraseña"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn-registro">Registrar</button>
+            </form>
+          </div>
+        </div>
       </main>
     </div>
     <script src="../../js/dashboard/dashboard-admi.js" type="module"></script>

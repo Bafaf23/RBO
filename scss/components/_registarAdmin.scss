@@ -1,0 +1,67 @@
+.container-registro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f7f6; /* Color suave */
+}
+
+.form-zen {
+  padding: 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.form-zen h2 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+.form-zen p {
+  color: #7f8c8d;
+  font-size: 0.9em;
+  margin-bottom: 25px;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.85em;
+  margin-bottom: 5px;
+  color: #34495e;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dcdde1;
+  border-radius: 10px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #3498db;
+}
+
+.btn-registro {
+  width: 100%;
+  padding: 12px;
+  background-color: #2ecc71; /* Verde éxito */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.btn-registro:hover {
+  background-color: #27ae60;
+}

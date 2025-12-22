@@ -1,8 +1,9 @@
 import { getData } from "../api/dolarApi.js";
 import { mesassege } from "../register/register.js";
 import { validacionInput, passPattern, emailPattern } from "../regex/regex.js";
+import { hashPassaword } from "../hash/hash.js";
 
-let dataUsers = JSON.parse(localStorage.getItem("dataUsers"));
+window.dataUsers = JSON.parse(localStorage.getItem("dataUsers")) || [];
 let user = JSON.parse(localStorage.getItem("userSession"));
 
 const nameAdmin = document.getElementById("admin-name");
@@ -143,23 +144,28 @@ function actualizar(id, fila) {
  * @param {*} fila
  */
 function eliminarUsuario(id, fila) {
-  // 1. Confirmación de seguridad
   if (!confirm("¿Estás seguro de que deseas eliminar este usuario?")) return;
 
-  // 2. Filtrar el array global para quitar al usuario
-  // (Usamos String por seguridad de tipos en 2025)
-  dataUsers = dataUsers.filter((user) => String(user.id) !== String(id));
+  const idABuscar = String(id).trim();
 
-  // 3. Guardar el nuevo array en LocalStorage
-  localStorage.setItem("dataUsers", JSON.stringify(dataUsers));
+  // 1. Filtrar la variable global
+  window.dataUsers = window.dataUsers.filter(
+    (user) => String(user.id).trim() !== idABuscar
+  );
 
-  // 4. Animación y borrado visual de la fila
+  // 2. Guardar en LocalStorage
+  localStorage.setItem("dataUsers", JSON.stringify(window.dataUsers));
+
+  // 3. ANIMACIÓN Y BORRADO VISUAL
   fila.style.opacity = "0";
   fila.style.transition = "0.3s";
 
   setTimeout(() => {
     fila.remove();
-    alert("Usuario eliminado correctamente.");
+    // 4. ¡IMPORTANTE! Actualizar los contadores de la interfaz
+    renderUser();
+    renderAdmin();
+    console.log("Eliminado. Quedan:", window.dataUsers.length);
   }, 300);
 }
 
@@ -197,6 +203,12 @@ dataUsers.forEach((dataUser) => {
   const btnGuardar = trTabla.querySelector(".btn-guardar");
   btnGuardar.addEventListener(`click`, () => {
     actualizar(dataUser.id, trTabla);
+  });
+
+  const btnEliminar = trTabla.querySelector(".btn-elimina");
+  btnEliminar.addEventListener("click", () => {
+    // Pasamos el ID real y la fila completa (trTabla)
+    eliminarUsuario(dataUser.id, trTabla);
   });
 });
 
@@ -257,30 +269,81 @@ dataUsers.forEach((dataUser) => {
   btnGuardar.addEventListener(`click`, () => {
     actualizar(dataUser.id, row);
   });
+
+  const btnEliminar = row.querySelector(".btn-elimina");
+  btnEliminar.addEventListener("click", () => {
+    // Pasamos el ID real y la fila completa (trTabla)
+    eliminarUsuario(dataUser.id, row);
+  });
 });
 
-// Para la tabla de Escritorio
-const tablaDesktop = document.getElementById("users-table-body");
-if (tablaDesktop) {
-  tablaDesktop.addEventListener("click", (e) => {
-    const btn = e.target.closest(".btn-elimina");
-    if (btn) {
-      const id = btn.dataset.id;
-      const fila = btn.closest("tr");
-      eliminarUsuario(id, fila);
-    }
-  });
-}
+/* modal */
+const modal = document.getElementById("miModal");
+const btnOpenModal = document.getElementById("openModal");
+const btnCloseModal = document.querySelector(".close-btn");
 
-// Para la tabla Móvil
-const tablaMovil = document.getElementById("tablaMovil");
-if (tablaMovil) {
-  tablaMovil.addEventListener("click", (e) => {
-    const btn = e.target.closest(".btn-elimina");
-    if (btn) {
-      const id = btn.dataset.id;
-      const fila = btn.closest(".row");
-      eliminarUsuario(id, fila);
+//btn abrial modal
+btnOpenModal.addEventListener(`click`, () => {
+  modal.style.display = `flex`;
+});
+
+//btn Cerrar modal
+btnCloseModal.addEventListener(`click`, () => {
+  modal.style.display = `none`;
+});
+
+//cierra la modal a escuchar un click fuera de la caja
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = `none`;
+  }
+};
+
+/* reguistro de usuario creado por el Admi */
+document
+  .getElementById("registroForm")
+  .addEventListener(`submit`, async (e) => {
+    e.preventDefault();
+
+    const data = JSON.parse(localStorage.getItem("dataUsers"));
+
+    const name = document.getElementById("nombre").value.trim();
+    const lastName = document.getElementById("apellido").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const pass = document.getElementById("pass").value.trim();
+    const confirmPass = document.getElementById("confirmPass").value.trim();
+
+    if (pass !== confirmPass) {
+      alert("❌ Las contraseñas no coinciden.");
+      return;
     }
+
+    console.log(pass, confirmPass);
+
+    const exiteEmial = dataUsers.some((usuario) => usuario.email === email);
+
+    if (exiteEmial)
+      return mesassege(
+        `El correo ingresado ya excite en la base de datos`,
+        `Correo`
+      );
+
+    let passSegura = await hashPassaword(pass);
+
+    if (!validacionInput(pass, passPattern))
+      return mesassege(`las clave no cumple con los requisitos`, `error`);
+
+    let newUser = {
+      id: Date.now(),
+      admi: false,
+      name: name,
+      lastName: lastName,
+      email: email,
+      passwod: passSegura,
+    };
+
+    data.push(newUser);
+    localStorage.setItem("dataUsers", JSON.stringify(data));
+
+    document.getElementById("registroForm").reset();
   });
-}
