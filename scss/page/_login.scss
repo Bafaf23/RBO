@@ -41,6 +41,7 @@
         gap: 1rem;
         padding: 0.7rem;
         .label {
+          position: relative;
           display: flex;
           gap: 0.5rem;
           flex-direction: column;
@@ -57,6 +58,20 @@
             border: none;
             border-bottom: 1px solid rgb(3, 22, 107);
             background-color: rgb(248, 246, 246);
+          }
+        }
+        .iconEyer {
+          position: absolute;
+          bottom: 3%;
+          right: 2%;
+          color: u.$primari-color;
+          font-size: 1.2rem;
+          cursor: pointer;
+          padding: 0.1rem;
+          border-radius: 0.2rem;
+
+          &:hover {
+            background-color: rgb(211, 208, 208);
           }
         }
       }

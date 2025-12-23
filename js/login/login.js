@@ -44,3 +44,16 @@ if (loginbtn) {
     }
   });
 }
+
+//Mostar pass
+const btnMostarPass = document.getElementById("mostarPass");
+btnMostarPass.addEventListener(`click`, () => {
+  const passInput = document.getElementById("pasUser");
+  let typeInput = passInput.type;
+
+  if (typeInput === `password`) {
+    passInput.type = `text`;
+  } else {
+    passInput.type = `password`;
+  }
+});
