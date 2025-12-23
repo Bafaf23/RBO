@@ -35,14 +35,20 @@ a {
   font-style: italic;
   color: rgb(131, 129, 129);
 }
-.card .saldo {
+.card .content-saldo {
   display: flex;
   justify-content: stard;
   align-items: stard;
+  flex-direction: column;
   gap: 0.2rem;
-  color: rgb(63, 62, 62);
+  color: rgb(59, 58, 58);
 }
-.card .saldo #saldo {
+.card .content-saldo .saldo {
+  display: flex;
+  justify-content: end;
+}
+.card .content-saldo .saldo #saldo,
+.card .content-saldo .saldo #saldoDolar {
   font-size: 1.8rem;
 }
 
@@ -347,6 +353,58 @@ a {
 
 .btn-registro:hover {
   background-color: #27ae60;
+}
+
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dcdde1;
+  border-radius: 10px;
+  background-color: white;
+  color: #34495e;
+  font-size: 0.95em;
+  outline: none;
+  cursor: pointer;
+  appearance: none; /* Elimina la flecha original del sistema */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: all 0.3s ease;
+}
+
+/* Estado Focus (Igual que tus inputs) */
+.input-group select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+}
+
+/* Crear una flecha personalizada con CSS */
+.select-wrapper::after {
+  content: "▼";
+  font-size: 0.7em;
+  color: #7f8c8d;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Permite hacer clic a través de la flecha */
+}
+
+/* Estilo para las opciones dentro del select */
+.input-group select option {
+  padding: 10px;
+  background-color: white;
+  color: #2c3e50;
+}
+
+.input-group input::-webkit-outer-spin-button,
+.input-group input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .content-form {

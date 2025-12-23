@@ -51,7 +51,7 @@
                   Balance
                 </li>
               </a>
-              <li class="link">
+              <li class="link" id="openModalIngreso">
                 <span>
                   <i class="fa-solid fa-angle-up"></i>
                 </span>
@@ -134,9 +134,15 @@
                     <h2>Saldo</h2>
                     <span class="tipoCuenta">tipo de cuenta</span>
                   </div>
-                  <div class="saldo">
-                    <div id="saldo">0.00</div>
-                    <sup>Bs</sup>
+                  <div class="content-saldo">
+                    <div class="saldo">
+                      <div id="saldo">0.00</div>
+                      <sup>Bs</sup>
+                    </div>
+                    <div class="saldo">
+                      <div id="saldoDolar">100</div>
+                      <sup>$</sup>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -150,7 +156,7 @@
                   </span>
                   Balance
                 </li>
-                <li>
+                <li id="openModalIngresoMovil">
                   <span>
                     <i class="fa-solid fa-angle-up"></i>
                   </span>
@@ -173,9 +179,9 @@
             <!-- hitorial -->
             <section class="resuemenes">
               <h2 class="titel-resumen">Transacciones</h2>
-              <div class="content-resumenes">
+              <div class="content-resumenes" id="historial">
                 <!-- card -->
-                <div class="card-historial egreso">
+                <!-- <div class="card-historial egreso">
                   <div class="historial-info">
                     <h3>Nombre del comercio</h3>
                     <span>12/01/2025</span>
@@ -187,8 +193,8 @@
                     </div>
                     <sup>Bs</sup>
                   </div>
-                </div>
-                <div class="card-historial ingreso">
+                </div> -->
+                <!--                 <div class="card-historial ingreso">
                   <div class="historial-info">
                     <h3>Nombre del comercio</h3>
                     <span>12/01/2025</span>
@@ -200,7 +206,7 @@
                     </div>
                     <sup>Bs</sup>
                   </div>
-                </div>
+                </div> -->
               </div>
             </section>
           </main>
@@ -213,7 +219,45 @@
           <p class="version">V-2.0.02025</p>
         </footer>
       </div>
+
+      <!-- modal -->
+      <!-- Estructura de la Modal -->
+      <!-- modal ingreso -->
+      <div id="miModal" class="modal">
+        <div class="modal-content">
+          <span class="close-btn">&times;</span>
+          <h2>Registro de ingresos</h2>
+          <form id="registroForm" class="form-zen">
+            <div class="input-group">
+              <label for="nombre">Monto</label>
+              <input
+                type="number"
+                id="monto"
+                step="0.01"
+                min="0"
+                placeholder="Ej. 1.00"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <label for="nombre">Fecha de la operacion</label>
+              <input type="date" id="fecha" required />
+            </div>
+            <div class="input-group">
+              <label for="apellido">Seleciona una categoria</label>
+              <div class="select-wrapper">
+                <select name="categoria" id="cargo" required>
+                  <option value="Sueldo-salarios">Sueldo y salario</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn-registro" id="ingreso">Registrar</button>
+          </form>
+        </div>
+      </div>
     </div>
+    <script type="module" src="../js/dashboard/ingreso.js"></script>
     <script type="module" src="../js/dashboard/dashboard.js"></script>
     <script type="module" src="../js/api/dolarApi.js"></script>
   </body>

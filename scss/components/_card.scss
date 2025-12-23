@@ -8,35 +8,30 @@
   border-radius: 0.2rem;
   border: 1px solid rgb(235, 232, 232);
 
-  .info-card{
+  .info-card {
     @include mix.display(flex, center, stard);
     flex-direction: column;
     gap: 0.3rem;
 
-    .tipoCuenta{
+    .tipoCuenta {
       font-style: italic;
       color: rgb(131, 129, 129);
     }
   }
 
-  .saldo{
+  .content-saldo {
     @include mix.display(flex, stard, stard);
+    flex-direction: column;
     gap: 0.2rem;
-    color: rgb(63, 62, 62);
+    color: rgb(59, 58, 58);
+    .saldo {
+      display: flex;
+      justify-content: end;
 
-    #saldo{
-      font-size: 1.8rem;
-      
+      #saldo,
+      #saldoDolar {
+        font-size: 1.8rem;
+      }
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
