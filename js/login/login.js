@@ -23,7 +23,7 @@ if (loginbtn) {
     //comporvando los campos vacios
     if (emial === `` || pass === ``) {
       return alertaZen(
-        `Compla los campos para cuntinuar`,
+        `Completa los campos para cuntinuar`,
         `Los campos no pueden estar vacios`,
         `warning`
       );
