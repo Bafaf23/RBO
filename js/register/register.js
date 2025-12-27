@@ -87,6 +87,8 @@ if (register) {
       email: rawEmail,
       passwod: passawordSegura,
       admi: false,
+      trans: [],
+      saldo: 0,
     };
 
     registerData.push(newUser);

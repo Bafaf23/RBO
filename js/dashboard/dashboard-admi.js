@@ -377,6 +377,8 @@ document
       lastName: lastName,
       email: email,
       passwod: passSegura,
+      saldo: 0,
+      trans: [],
     };
 
     data.push(newUser);

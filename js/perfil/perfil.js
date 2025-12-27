@@ -11,6 +11,25 @@ const converAdmin = document.getElementById("converAdmin");
 const btnEdit = document.getElementById("edit");
 const btnGuardar = document.getElementById("guardar");
 
+const logoutBtn = document.getElementById("logoutBtn");
+const logoutBtnDes = document.getElementById("logoutBtnDes");
+
+//cerrar seccion movil
+if (logoutBtn) {
+  logoutBtn.addEventListener(`click`, () => {
+    localStorage.removeItem("userSession");
+    window.location.href = "page/login/login.html";
+  });
+}
+
+//cerrar seccion nav-destoktop
+if (logoutBtnDes) {
+  logoutBtnDes.addEventListener(`click`, () => {
+    localStorage.removeItem("userSession");
+    window.location.href = "page/login/login.html";
+  });
+}
+
 if (nameUser) nameUser.innerHTML = `${user.name} ${user.lastName}`;
 if (idAcount) idAcount.innerHTML = user.id;
 

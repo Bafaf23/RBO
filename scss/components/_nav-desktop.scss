@@ -9,6 +9,10 @@
 @media only screen and (min-width: 768px) {
   .content-desktop {
     width: 17%;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
 
     .nav-desktop {
       @include mix.display(flex, space-around, stretch);

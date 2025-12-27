@@ -180,6 +180,10 @@ a {
 @media only screen and (min-width: 768px) {
   .content-desktop {
     width: 17%;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
   }
   .content-desktop .nav-desktop {
     display: flex;
@@ -1031,7 +1035,7 @@ header .content-btn {
   justify-content: end;
   align-items: stretch;
 }
-header .content-btn button {
+header .content-btn #logoutBtn {
   padding: 0.2rem;
   font-size: 1rem;
   border: none;
@@ -1039,10 +1043,16 @@ header .content-btn button {
   color: #f5bc03;
   cursor: pointer;
 }
-header .content-btn button:hover {
+header .content-btn #logoutBtn:hover {
   color: rgb(241, 201, 19);
 }
 
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .content-btn #logoutBtn {
+    display: none;
+  }
+}
 .custom-shape-divider-top-1754052895 {
   position: absolute;
   top: 0;
@@ -1078,6 +1088,7 @@ header .content-btn button:hover {
   justify-content: space-between;
   align-items: stretch;
   flex-direction: column;
+  min-height: 100vh;
 }
 .wrapper .wrapperdos main {
   display: flex;
