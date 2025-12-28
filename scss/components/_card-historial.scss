@@ -32,6 +32,15 @@
   }
 }
 
+.btn-eliminar {
+  padding: 0.3rem;
+  border: none;
+  color: white;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  background-color: red;
+}
+
 .egreso {
   background-color: color.$egreso-bg;
   border-color: color.$egreso-border;

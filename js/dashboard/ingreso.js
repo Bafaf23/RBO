@@ -1,19 +1,24 @@
 import { getData } from "../api/dolarApi.js";
 
 const boton = document.getElementById("ingreso");
-const saldoDisplay = document.getElementById("saldo");
 
-const dataUsers = JSON.parse(localStorage.getItem("userSession"));
+function saldo() {
+  const dataUsers = JSON.parse(localStorage.getItem("userSession"));
+  const sesion = JSON.parse(localStorage.getItem("userSession"));
+  const saldoDisplay = document.getElementById("saldo");
 
-saldoDisplay.textContent = dataUsers.saldo.toFixed(2);
+  if (sesion && saldoDisplay) {
+    saldoDisplay.textContent = sesion.saldo.toFixed(2);
+  }
+  actualizarSaldos(sesion.saldo);
+}
 
 // 2. Función para renderizar el historial al cargar la página
 function renderHistorial() {
+  const dataUsers = JSON.parse(localStorage.getItem("userSession"));
+
   const lista = document.getElementById("historial");
   const sesion = JSON.parse(localStorage.getItem("userSession"));
-
-  console.log("Datos de sesión:", sesion); // <--- ¡Añade esto!
-  console.log("Transacciones a dibujar:", sesion?.trans); // <--- ¡Y esto!
 
   lista.innerHTML = ""; // Limpiar lista antes de dibujar
 
@@ -39,13 +44,20 @@ function renderHistorial() {
             <span>${item.monto.toFixed(2)}</span>
           </div>
           <sup>Bs</sup>
-          <button onclick="eliminarTransaccion(${
-            item.id
-          })" class="btn-eliminar">❌</button>
+          <button class="btn-eliminar">
+           <i class="fa-solid fa-trash-can"></i>
+          </button>
         </div>
       </div>`;
     lista.appendChild(tans);
+
+    const btnEliminar = tans.querySelector(".btn-eliminar");
+    btnEliminar.addEventListener(`click`, () => {
+      eliminar(item.id);
+    });
   });
+
+  saldo();
 }
 
 function actualizarSaldos(totalAcumulado) {
@@ -62,7 +74,6 @@ function actualizarSaldos(totalAcumulado) {
       console.error("Error al obtener la tasa:", error);
     });
 }
-actualizarSaldos(dataUsers.saldo);
 
 function calcularYMostrarDolar(tasa, totalBs) {
   const displayDolar = document.getElementById("saldoDolar");
@@ -79,6 +90,8 @@ function calcularYMostrarDolar(tasa, totalBs) {
 
 // 3. Función para agregar nueva transacción
 function agregar() {
+  const dataUsers = JSON.parse(localStorage.getItem("userSession"));
+
   const fecha = document.getElementById("fecha").value;
   const cargo = document.getElementById("cargo").value;
   const montoInput = document.getElementById("monto");
@@ -122,6 +135,9 @@ function agregar() {
     localStorage.setItem("dataUsers", JSON.stringify(listaUsuarios)); // Mantiene el array
     localStorage.setItem("userSession", JSON.stringify(sesionActiva)); // Mantiene el objeto
 
+    saldo();
+    renderHistorial();
+
     console.log("Transacción guardada con éxito");
   } else {
     console.error("No se encontró el usuario en la base de datos");
@@ -129,18 +145,34 @@ function agregar() {
 
   // Limpiar campos y refrescar vista
   montoInput.value = "";
-  renderHistorial();
 }
 
-// 4. Función para eliminar (Reemplaza a tu código con jQuery)
-/* window.eliminarTransaccion = function (id) {
-  if (!confirm("¿Eliminar esta transacción?")) return;
+function eliminar(id) {
+  let listaUsuarios = JSON.parse(localStorage.getItem("dataUsers")) || [];
+  const dataUsers = JSON.parse(localStorage.getItem("userSession"));
 
-  dataUsers = dataUsers.filter((item) => item.id !== id);
-  localStorage.setItem("trasn", JSON.stringify(dataUser));
-  renderHistorial();
-}; */
+  const transEliminar = dataUsers.trans;
+  const transIndex = transEliminar.findIndex((u) => u.id == id);
+  const transUser = listaUsuarios.findIndex((u) => u.id === dataUsers.id);
+
+  if (transIndex !== -1) {
+    dataUsers.saldo = dataUsers.saldo - dataUsers.trans[transIndex].monto;
+
+    transEliminar.splice(transIndex, 1);
+
+    listaUsuarios[transUser] = dataUsers;
+
+    localStorage.setItem("userSession", JSON.stringify(dataUsers));
+    localStorage.setItem("dataUsers", JSON.stringify(listaUsuarios));
+
+    renderHistorial();
+    saldo();
+  } else {
+    console.log(`Transaccion no encontrada`);
+  }
+}
 
 // Eventos e inicio
 boton.addEventListener("click", agregar);
 renderHistorial(); // Dibujar todo al abrir la página
+saldo();

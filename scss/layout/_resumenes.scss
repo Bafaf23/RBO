@@ -15,7 +15,10 @@
 
   .content-resumenes {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 0.5rem;
+    padding: 0.5rem;
+    background-color: rgb(247, 247, 247);
+    border-radius: 0.5rem;
   }
 }

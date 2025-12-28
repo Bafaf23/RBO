@@ -119,6 +119,15 @@ a {
   transform: scale(1.02);
 }
 
+.btn-eliminar {
+  padding: 0.3rem;
+  border: none;
+  color: white;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  background-color: red;
+}
+
 .egreso {
   background-color: rgba(255, 0, 0, 0.116);
   border-color: rgba(255, 2, 2, 0.192);
@@ -1186,8 +1195,11 @@ header .content-btn #logoutBtn:hover {
 }
 .resuemenes .content-resumenes {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgb(247, 247, 247);
+  border-radius: 0.5rem;
 }
 
 footer {

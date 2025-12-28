@@ -106,6 +106,10 @@ if (register) {
       "Tu cuenta en REBO ha sido creada con éxito.",
       "success"
     );
+
+    setTimeout(() => {
+      window.location.href = `../login/login.html`;
+    }, 4000);
   });
 }
 
