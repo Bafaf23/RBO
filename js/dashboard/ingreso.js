@@ -2,8 +2,7 @@ import { getData } from "../api/dolarApi.js";
 
 const boton = document.getElementById("ingreso");
 
-function saldo() {
-  const dataUsers = JSON.parse(localStorage.getItem("userSession"));
+export function saldo() {
   const sesion = JSON.parse(localStorage.getItem("userSession"));
   const saldoDisplay = document.getElementById("saldo");
 
@@ -14,7 +13,7 @@ function saldo() {
 }
 
 // 2. Función para renderizar el historial al cargar la página
-function renderHistorial() {
+export function renderHistorial() {
   const dataUsers = JSON.parse(localStorage.getItem("userSession"));
 
   const lista = document.getElementById("historial");
@@ -30,11 +29,11 @@ function renderHistorial() {
   sesion.trans.forEach((item) => {
     const tans = document.createElement("div");
 
-    // Determinar clase si es ingreso o egreso (opcional)
-    const tipoClase = item.monto >= 0 ? "ingreso" : "egreso";
+    const tipoTarns = item.tipo == `ingreso` ? `ingreso` : `egreso`;
+    console.log(tipoTarns);
 
     tans.innerHTML = `
-      <div class="card-historial ${tipoClase}" id="row-${item.id}">
+      <div class="card-historial ${tipoTarns}" id="row-${item.id}">
         <div class="historial-info">
           <h3>${item.cargo}</h3>
           <span>${item.fecha}</span>
@@ -113,6 +112,7 @@ function agregar() {
   const nuevaTrasn = {
     id: Date.now(),
     monto: monto,
+    tipo: `ingreso`,
     cargo: cargo,
     fecha: fecha,
   };
@@ -156,7 +156,11 @@ function eliminar(id) {
   const transUser = listaUsuarios.findIndex((u) => u.id === dataUsers.id);
 
   if (transIndex !== -1) {
-    dataUsers.saldo = dataUsers.saldo - dataUsers.trans[transIndex].monto;
+    if (dataUsers.trans[transIndex].tipo === `ingreso`) {
+      dataUsers.saldo = dataUsers.saldo - dataUsers.trans[transIndex].monto;
+    } else if (dataUsers.trans[transIndex].tipo === `egreso`) {
+      dataUsers.saldo = dataUsers.saldo + dataUsers.trans[transIndex].monto;
+    }
 
     transEliminar.splice(transIndex, 1);
 

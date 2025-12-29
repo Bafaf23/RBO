@@ -13,11 +13,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Css externo -->
     <link rel="stylesheet" href="../css/main.css" />
 
     <link rel="icon" href="../asset/img/RBO.png" />
-    <title>Rebus OE - Balance</title>
+    <title>RBO - Balance</title>
   </head>
   <body>
     <div class="custom-shape-divider-top-1754052895">
@@ -57,7 +58,7 @@
                 </span>
                 Ingreso
               </li>
-              <li class="link">
+              <li class="link" id="openModalEgreso">
                 <span>
                   <i class="fa-solid fa-angle-down"></i>
                 </span>
@@ -162,7 +163,7 @@
                   </span>
                   Ingreso
                 </li>
-                <li>
+                <li id="openModalEgresoMovil">
                   <span>
                     <i class="fa-solid fa-angle-down"></i>
                   </span>
@@ -222,7 +223,7 @@
 
       <!-- modal -->
       <!-- Estructura de la Modal -->
-      <!-- modal ingreso -->
+      <!-- modal egreso -->
       <div id="miModal" class="modal">
         <div class="modal-content">
           <span class="close-btn">&times;</span>
@@ -256,9 +257,53 @@
           </form>
         </div>
       </div>
+
+      <!-- modal -->
+      <!-- Estructura de la Modal -->
+      <!-- modal ingreso -->
+      <div id="miModalEgreso" class="modal">
+        <div class="modal-content">
+          <span class="close-btn">&times;</span>
+          <h2>Registro de egresos</h2>
+          <form id="registroForm" class="form-zen">
+            <div class="input-group">
+              <label for="nombre">Monto</label>
+              <input
+                type="number"
+                id="montoEgreso"
+                step="0.01"
+                min="0"
+                placeholder="Ej. 1.00"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <label for="nombre">Fecha de la operacion</label>
+              <input type="date" id="fechaEgreso" required />
+            </div>
+            <div class="input-group">
+              <label for="apellido">Seleciona una categoria</label>
+              <div class="select-wrapper">
+                <select name="categoria" id="cargoEgreso" required>
+                  <option value="Comida">Comida</option>
+                  <option value="Osio">Osio</option>
+                  <option value="Netflix">Netflix</option>
+                  <option value="Internet">Internet</option>
+                  <option value="Gas">Gas</option>
+                  <option value="Agua">Agua</option>
+                  <option value="Electricidad">Electricidad</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn-registro" id="egreso">Registrar</button>
+          </form>
+        </div>
+      </div>
     </div>
     <script type="module" src="../js/dashboard/ingreso.js"></script>
     <script type="module" src="../js/dashboard/dashboard.js"></script>
+    <script type="module" src="../js/dashboard/egreso.js"></script>
+    <script type="module" src="../js/SweetAlert/alert.js"></script>
     <script type="module" src="../js/api/dolarApi.js"></script>
   </body>
 </html>
