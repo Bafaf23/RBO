@@ -27,8 +27,7 @@ Sigue estos pasos para ejecutar el proyecto localmente:
 
 1. **Clona el repositorio:**
    ```bash
-   git clone github.com
-   cd tu-proyecto
+   git clone https://github.com/Bafaf23/RBO.git
    ```
 
 ## 📬 Contacto
