@@ -6,7 +6,7 @@
   width: 100%;
 
   .content-menu {
-    @include mix.display(flex, space-between, stretch);
+    @include mix.display(flex, space-around, stretch);
     padding: 0.3rem;
     font-size: 1.1rem;
     a {

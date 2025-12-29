@@ -24,9 +24,11 @@
     flex-direction: column;
     gap: 0.2rem;
     color: rgb(59, 58, 58);
+
     .saldo {
       display: flex;
       justify-content: end;
+      gap: 0.3rem;
 
       #saldo,
       #saldoDolar {

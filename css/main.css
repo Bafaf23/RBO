@@ -46,6 +46,7 @@ a {
 .card .content-saldo .saldo {
   display: flex;
   justify-content: end;
+  gap: 0.3rem;
 }
 .card .content-saldo .saldo #saldo,
 .card .content-saldo .saldo #saldoDolar {
@@ -59,7 +60,7 @@ a {
 }
 .nav-movil .content-menu {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: stretch;
   padding: 0.3rem;
   font-size: 1.1rem;
@@ -1102,7 +1103,7 @@ header .content-btn #logoutBtn:hover {
 }
 .wrapper .wrapperdos {
   display: flex;
-  justify-content: space-between;
+  justify-content: starts;
   align-items: stretch;
   flex-direction: column;
   min-height: 100vh;

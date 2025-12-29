@@ -7,7 +7,7 @@
   min-height: 100vh;
 
   .wrapperdos {
-    @include mix.display(flex, space-between, stretch);
+    @include mix.display(flex, starts, stretch);
     flex-direction: column;
     min-height: 100vh;
 
