@@ -2,6 +2,8 @@
 .vscode
 .node_modules
 .python
+packege-lock.json
+packege.json
 
 #js no nesesarios
 js/deuda.js
