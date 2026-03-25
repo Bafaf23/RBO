@@ -1,0 +1,119 @@
+@use "./../utils/variables-color" as u;
+
+.container-registro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.form-zen {
+  padding: 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.form-zen h2 {
+  margin-bottom: 10px;
+}
+.form-zen p {
+  font-size: 0.9em;
+  margin-bottom: 25px;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.85em;
+  margin-bottom: 5px;
+  color: u.$primary-color;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  background-color: u.$color-text;
+  border: 1px solid u.$color-text;
+  border-radius: 10px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #3498db;
+}
+
+.btn-registro {
+  width: 100%;
+  padding: 12px;
+  background-color: #2ecc71; /* Verde éxito */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.btn-registro:hover {
+  background-color: #27ae60;
+}
+
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dcdde1;
+  border-radius: 10px;
+  background-color: white;
+  color: #34495e;
+  font-size: 0.95em;
+  outline: none;
+  cursor: pointer;
+  appearance: none; /* Elimina la flecha original del sistema */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: all 0.3s ease;
+}
+
+/* Estado Focus (Igual que tus inputs) */
+.input-group select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+}
+
+/* Crear una flecha personalizada con CSS */
+.select-wrapper::after {
+  content: "▼";
+  font-size: 0.7em;
+  color: #7f8c8d;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Permite hacer clic a través de la flecha */
+}
+
+/* Estilo para las opciones dentro del select */
+.input-group select option {
+  padding: 10px;
+  background-color: white;
+  color: #2c3e50;
+}
+
+.input-group input::-webkit-outer-spin-button,
+.input-group input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

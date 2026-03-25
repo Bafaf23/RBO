@@ -1,0 +1,36 @@
+.alert {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #ffffff;
+  border-left: 5px solid orange;
+  padding: 15px 25px;
+  border-radius: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 9999;
+  animation: deslizar 0.5s ease;
+
+  .ico {
+    color: orange;
+    font-size: 2rem;
+  }
+
+  .info-alert {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@keyframes deslizar {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

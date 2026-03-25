@@ -1,0 +1,32 @@
+@mixin display($display, $justify, $item) {
+  display: $display;
+  justify-content: $justify;
+  align-items: $item;
+}
+
+@mixin flex($gap, $direction, $justify, $align) {
+  display: flex;
+  gap: $gap;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin grid($columns, $rows) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  grid-template-rows: repeat($rows, 1fr);
+}
+
+// _mixins.scss
+@mixin dark-mode {
+  // Detecta si el usuario tiene el modo oscuro en su Sistema Operativo
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+
+  // Detecta si se ha añadido el atributo manualmente (ej. mediante un botón)
+  [data-theme="dark"] & {
+    @content;
+  }
+}
