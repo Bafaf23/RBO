@@ -1,4 +1,4 @@
-# RBO
+# RBO (Desarrollando la version 2)
 
 La mejor forma de llevar tus finanzas y tener control sobros tus ingresos y egresos.
 
