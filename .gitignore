@@ -8,6 +8,8 @@ src/app/js/deuda.js
 src/app/js/egreso.js
 src/app/js/index.js
 src/app/js/ingreso.js
+src/scss/*
+src/components
 
 #archivos html sin terminar
 src/app/page/deuda.html
