@@ -13,7 +13,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="icon" href="../../asset/img/favico.ico" />
     <link rel="stylesheet" href="../../output.css" />
     <title>RBO</title>
@@ -43,7 +42,11 @@
         class="min-h-screen flex justify-center md:justify-end p-4 md:p-20 transition-all duration-100 ease-in-out"
         id="display"
       >
-        <div id="alert"></div>
+        <!-- content notification -->
+        <div
+          id="notification-container"
+          class="fixed top-5 right-5 z-9999 flex flex-col gap-3 pointer-events-none"
+        ></div>
         <form
           action="#"
           class="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl flex flex-1 flex-col"
@@ -57,7 +60,7 @@
             </a>
           </div>
 
-          <div class="space-y-6 md:h-full">
+          <div class="space-y-6">
             <h2 class="text-2xl font-bold text-slate-700">Inicia Secion</h2>
             <div class="flex flex-col gap-2">
               <label for="" class="text-sm font-semibold text-slate-600 ml-1"

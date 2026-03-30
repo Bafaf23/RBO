@@ -29,7 +29,7 @@ export function renderHistorial() {
   sesion.trans.forEach((item) => {
     const tans = document.createElement("div");
 
-    const tipoTarns = item.tipo == `ingreso` ? `ingreso` : `egreso`;
+    const tipoTarns = item.tipo == `ingreso`;
     console.log(tipoTarns);
 
     tans.innerHTML = `

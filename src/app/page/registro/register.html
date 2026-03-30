@@ -43,7 +43,11 @@
         class="min-h-screen flex justify-center md:justify-end p-4 md:p-8 transition-all duration-100 ease-in-out"
         id="display"
       >
-        <div id="alert"></div>
+        <!-- content notification -->
+        <div
+          id="notification-container"
+          class="fixed top-5 right-5 z-9999 flex flex-col gap-3 pointer-events-none"
+        ></div>
         <form
           action="#"
           class="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl flex flex-1 flex-col"

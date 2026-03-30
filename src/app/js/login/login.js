@@ -1,7 +1,6 @@
-import { mesassege } from "../register/register.js";
 import { hashPassaword } from "../hash/hash.js";
 import { validacionInput, emailPattern } from "../regex/regex.js";
-import { alertaZen } from "../SweetAlert/alert.js";
+import { showIOSNotification } from "../UI/showIOSNotification.js";
 
 let userData = JSON.parse(localStorage.getItem("dataUsers")) || [];
 
@@ -22,10 +21,10 @@ if (loginbtn) {
 
     //comporvando los campos vacios
     if (emial === `` || pass === ``) {
-      return alertaZen(
-        `Completa los campos para cuntinuar`,
-        `Los campos no pueden estar vacios`,
-        `warning`
+      return showIOSNotification(
+        "Campos vacios",
+        "Los campos no pueden estar vacios.",
+        "error"
       );
     }
 
@@ -33,15 +32,19 @@ if (loginbtn) {
     const user = userData.find((u) => u.email === emial);
 
     if (!validacionInput(emial, emailPattern)) {
-      alertaZen(`Formato de correo invalido`, `Correo`, `warning`);
+      showIOSNotification(
+        "Formato",
+        "El correo ingresado es incorrecto",
+        "error"
+      );
     }
 
     //comoprovaciones
     if (!user)
-      return alertaZen(
-        `El usuario no esta registrado`,
-        `Registrate`,
-        `warning`
+      return showIOSNotification(
+        "Correo registrado",
+        "El correo ya esta registrado",
+        "info"
       );
 
     if (user && user.passwod === passawordSegura) {
@@ -50,7 +53,11 @@ if (loginbtn) {
         window.location.href = `../dashboard.html`;
       }, 2000);
     } else {
-      alertaZen(`Usuario o contrasena errada`, `Inténtalo de nuevo.`, `error`);
+      showIOSNotification(
+        `Datos errados`,
+        `Usuario o contraseña incorrectos.`,
+        `error`
+      );
     }
   });
 }

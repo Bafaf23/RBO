@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fontawesone -->
+    <script
+      src="https://kit.fontawesome.com/a74559d35e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" href="asset/img/favico.ico" />
+    <link rel="stylesheet" href="output.css" />
+    <title>404 - Página no encontrada | RBO</title>
+  </head>
+  <body class="bg-slate-50 flex items-center justify-center min-h-screen p-6">
+    <div class="max-w-md w-full text-center space-y-8">
+      <div
+        class="relative mx-auto w-24 h-24 bg-white rounded-[22px] shadow-xl flex items-center justify-center border border-slate-100"
+      >
+        <i
+          class="fa-regular fa-compass text-4xl text-rose-500 animate-pulse"
+        ></i>
+
+        <span
+          class="absolute -top-2 -right-2 bg-rose-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
+          >404</span
+        >
+      </div>
+
+      <div class="space-y-2">
+        <h1 class="text-4xl font-black text-slate-900 tracking-tight">
+          Ruta perdida
+        </h1>
+        <p class="text-slate-500 text-sm leading-relaxed">
+          Parece que la transacción o página que buscas no existe en el sistema
+          **RBO**. Tal vez fue movida a la versión antigua o eliminada.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <a
+          href="index.html"
+          class="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold text-sm hover:bg-slate-800 transition-all active:scale-95 shadow-lg shadow-slate-200"
+        >
+          Volver al inicio
+        </a>
+        <button
+          onclick="window.history.back()"
+          class="w-full py-4 bg-white/70 backdrop-blur-md border border-slate-200 text-slate-600 rounded-2xl font-bold text-sm hover:bg-white transition-all active:scale-95"
+        >
+          Regresar a la página anterior
+        </button>
+      </div>
+
+      <p
+        class="text-[10px] text-slate-400 font-medium uppercase tracking-widest pt-8"
+      >
+        RBO Personal Finance System &bull; 2026
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,31 +1,11 @@
 import { hashPassaword } from "../hash/hash.js";
 import { validacionInput, emailPattern, passPattern } from "../regex/regex.js";
 import { alertaZen } from "../SweetAlert/alert.js";
+import { showIOSNotification } from "../UI/showIOSNotification.js";
 
 /* accediendo a los elementos el DOM */
 const contentAlert = document.getElementById("alert");
 const register = document.getElementById("register");
-
-export function mesassege(mensaje, titel) {
-  let alert = document.createElement("div");
-  alert.innerHTML = `<div class="alert animate__animated animate__fadeInLeft">
-        <div class="ico">
-          <i class="fa-solid fa-triangle-exclamation"></i>
-        </div>
-        <div class="info-alert">
-          <div>${titel}</div>
-          <div>
-            ${mensaje}
-          </div>
-        </div>
-      </div>`;
-
-  contentAlert.appendChild(alert);
-
-  setTimeout(() => {
-    alert.remove();
-  }, 4000);
-}
 
 let registerData = JSON.parse(localStorage.getItem("dataUsers")) || [];
 
@@ -50,18 +30,22 @@ if (register) {
       rawEmail === "" ||
       rawName === ""
     ) {
-      return alertaZen(`Opss!`, `Los campos no pueden estar vacios`, `error`);
+      return showIOSNotification(
+        `Opss!`,
+        `Los campos no pueden estar vacios`,
+        `error`
+      );
     }
 
     if (!validacionInput(rawEmail, emailPattern)) {
-      return alertaZen(
+      return showIOSNotification(
         `Opss!`,
         `El formato de la emial no es valido`,
         `warning`
       );
     }
     if (!validacionInput(rawPassword, passPattern)) {
-      return alertaZen(
+      return showIOSNotification(
         `Opsss!`,
         `La comtraseña no comple con los requisitos`,
         "warning"
@@ -69,16 +53,20 @@ if (register) {
     }
 
     if (passwod !== passConfi)
-      return alertaZen("Opss!", "verifica la contrasena", "warning");
+      return showIOSNotification(
+        "Opss!",
+        "Verifica la contrasena. No son iguales",
+        "info"
+      );
 
     const exiteEmial = registerData.some(
       (usuario) => usuario.email === rawEmail
     );
     if (exiteEmial)
-      return alertaZen(
+      return showIOSNotification(
         "Este correo ya está registrado.",
         "¿Tal vez querías iniciar sesión?",
-        "warning"
+        "info"
       );
 
     let passawordSegura = await hashPassaword(rawPassword);
@@ -104,10 +92,9 @@ if (register) {
     email.value = "";
     passwod.value = "";
 
-    alertaZen(
+    showIOSNotification(
       "¡Bienvenido!",
-      "Tu cuenta en REBO ha sido creada con éxito.",
-      "success"
+      "Tu cuenta en REBO ha sido creada con éxito."
     );
 
     setTimeout(() => {
