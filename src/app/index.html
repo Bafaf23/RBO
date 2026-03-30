@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fontawesone -->
+    <script
+      src="https://kit.fontawesome.com/a74559d35e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="output.css" />
+    <link rel="icon" href="asset/img/favico.ico" />
+    <title>Inicio - REBO</title>
+  </head>
+  <body>
+    <!-- encabezado -->
+    <header
+      id="nav"
+      class="flex justify-between p-5 fixed w-full fi top-0 z-50 transition-colors duration-75 ease-in"
+    >
+      <div class="flex items-center gap-3">
+        <img
+          src="asset/img/favico.ico"
+          alt="Logo RBO"
+          class="w-15 h-15 rounded-md"
+        />
+        <h1
+          id="logo-text"
+          class="text-xl font-bold tracking-tight text-emerald-600 font-sans"
+        >
+          Rebus <span class="text-blue-500">Finanzas</span>
+        </h1>
+      </div>
+      <div
+        class="text-xl font-bold bg-blue-600 text-white rounded-md p-3 hover:bg-blue-700 transition-colors"
+      >
+        <a href="page/login/login.html" class="p-3 w-full">Acceder</a>
+      </div>
+    </header>
+    <!-- loandig-->
+    <div
+      id="loader"
+      class="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-slate-50 transition-opacity duration-500"
+    >
+      <div class="relative flex h-20 w-20 items-center justify-center">
+        <div
+          class="absolute h-full w-full animate-spin rounded-full border-4 border-slate-200 border-t-indigo-600"
+        ></div>
+
+        <span class="text-xl font-black text-blue-600">R</span>
+      </div>
+
+      <h2
+        class="mt-4 text-sm font-bold tracking-widest text-slate-500 uppercase animate-pulse"
+      >
+        Cargando RBO
+      </h2>
+    </div>
+    <main id="appContent" class="invisible">
+      <!-- hero (sección principal) -->
+      <section class="w-full h-dvh flex items-center justify-center">
+        <div
+          class="relative overflow-hidden bg-slate-900 shadow-2xl w-full h-full"
+        >
+          <!-- Contenedor con scroll suave -->
+          <div
+            class="flex h-full snap-x snap-mandatory overflow-x-auto no-scrollbar scroll-smooth"
+          >
+            <!-- Card 1: Bienvenida -->
+            <div id="card1" class="min-w-full h-full snap-center relative">
+              <img
+                src="https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fHww%22"
+                class="absolute inset-0 w-full h-full object-cover opacity-60"
+                alt="Bienvenida"
+              />
+              <div
+                class="relative h-full flex flex-col justify-end p-8 bg-linear-to-t from-slate-900"
+              >
+                <h1
+                  class="text-3xl font-bold text-white font-sans tracking-tight"
+                >
+                  ¡Bienvenido a <span class="text-rebus-blue">RBO</span>!
+                </h1>
+                <p class="text-slate-200 mt-2 text-lg">
+                  El paraíso para planificar tus finanzas.
+                </p>
+                <button
+                  class="mt-4 w-fit px-6 py-2 bg-rebus-blue text-white font-bold rounded-lg hover:bg-blue-600 transition-colors"
+                >
+                  Ver más
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 2: Cashless -->
+            <div id="card2" class="min-w-full h-full snap-center relative">
+              <img
+                src="https://walpaper.es/wallpaper/2017/04/imagenes-de-paisajes-relajantes.jpg"
+                class="absolute inset-0 w-full h-full object-cover opacity-60"
+                alt="Cashless"
+              />
+              <div
+                class="relative h-full flex flex-col justify-end p-8 bg-linear-to-t from-slate-900"
+              >
+                <h1
+                  class="text-3xl font-bold text-white font-sans tracking-tight text-rebus-cyan"
+                >
+                  Cashless
+                </h1>
+                <p class="text-slate-200 mt-2 text-lg">
+                  Organiza tu ecosistema financiero institucional.
+                </p>
+                <button
+                  class="mt-4 w-fit px-6 py-2 bg-rebus-cyan text-white font-bold rounded-lg hover:bg-emerald-400 transition-colors"
+                >
+                  Ver más
+                </button>
+              </div>
+            </div>
+            <!-- Card 3: Un solo lugar -->
+            <div id="card3" class="min-w-full h-full snap-center relative">
+              <img
+                src="https://www.kalanobleas.com/wp-content/uploads/2023/11/Ejercicios-de-relajacion-y-meditacion-para-principiantes-2-1.png"
+                class="absolute inset-0 w-full h-full object-cover opacity-60"
+                alt="Un solo lugar"
+              />
+              <div
+                class="relative h-full flex flex-col justify-end p-8 bg-linear-to-t from-slate-900"
+              >
+                <h1
+                  class="text-3xl font-bold text-white font-sans tracking-tight text-rebus-cyan"
+                >
+                  ¡En un solo lugar!
+                </h1>
+                <p class="text-slate-200 mt-2 text-lg">
+                  Mil cuentas, un solo lugar para organizar tus finanzas
+                </p>
+                <p class="text-slate-200 mt-2 text-lg">
+                  100% seguro y confiable. No hay nada de qué preocuparse
+                </p>
+                <button
+                  class="mt-4 w-fit px-6 py-2 bg-rebus-cyan text-white font-bold rounded-lg hover:bg-emerald-400 transition-colors"
+                >
+                  Ver más
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navegación (Puntos) -->
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            <a
+              href="#card1"
+              class="w-3 h-3 rounded-full bg-white/30 hover:bg-white transition-colors"
+            ></a>
+            <a
+              href="#card2"
+              class="w-3 h-3 rounded-full bg-white/30 hover:bg-white transition-colors"
+            ></a>
+            <a
+              href="#card3"
+              class="w-3 h-3 rounded-full bg-white/30 hover:bg-white transition-colors"
+            ></a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="js/UI/header.js"></script>
+    <script src="js/UI/loand.js"></script>
+  </body>
+</html>

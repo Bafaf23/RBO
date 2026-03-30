@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--fontawesome CDN  -->
+    <script
+      src="https://kit.fontawesome.com/a74559d35e.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- CSS animation -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" href="../../asset/img/favico.ico" />
+    <link rel="stylesheet" href="../../output.css" />
+    <title>RBO</title>
+  </head>
+  <body>
+    <!-- loandig-->
+    <div
+      id="loader"
+      class="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-slate-50 transition-opacity duration-500"
+    >
+      <div class="relative flex h-20 w-20 items-center justify-center">
+        <div
+          class="absolute h-full w-full animate-spin rounded-full border-4 border-slate-200 border-t-indigo-600"
+        ></div>
+
+        <span class="text-xl font-black text-blue-600">R</span>
+      </div>
+
+      <h2
+        class="mt-4 text-sm font-bold tracking-widest text-slate-500 uppercase animate-pulse"
+      >
+        Cargando RBO
+      </h2>
+    </div>
+    <main id="appContent" class="invisible transition-opacity duration-500">
+      <div
+        class="min-h-screen flex justify-center md:justify-end p-4 md:p-20 transition-all duration-100 ease-in-out"
+        id="display"
+      >
+        <div id="alert"></div>
+        <form
+          action="#"
+          class="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl flex flex-1 flex-col"
+          id="formLogin"
+        >
+          <div class="text-center mb-8">
+            <a href="../../index.html" class="inline-block">
+              <h2 class="text-3xl font-bold text-slate-800">
+                RB<span class="text-blue-600">O</span>
+              </h2>
+            </a>
+          </div>
+
+          <div class="space-y-6 md:h-full">
+            <h2 class="text-2xl font-bold text-slate-700">Inicia Secion</h2>
+            <div class="flex flex-col gap-2">
+              <label for="" class="text-sm font-semibold text-slate-600 ml-1"
+                >Usuario</label
+              >
+              <input
+                type="email"
+                id="UserEmail"
+                class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+                placeholder="correo@ejemplo.com"
+              />
+            </div>
+            <div class="flex flex-col gap-2 relative">
+              <label for="" class="text-sm font-semibold text-slate-600 ml-1"
+                >Contrasena</label
+              >
+              <input
+                class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+                type="password"
+                name="user"
+                id="pasUser"
+                placeholder="********"
+              />
+              <span
+                class="absolute right-4 top-[65%] -translate-y-1/2 cursor-pointer text-slate-400 hover:text-blue-600 transition-colors"
+                id="mostarPass"
+                ><i class="fa-regular fa-eye"></i
+              ></span>
+            </div>
+
+            <div class="pt-4">
+              <button
+                type="submit"
+                id="loginBtn"
+                class="w-full rounded-xl bg-blue-600 py-4 font-bold text-white shadow-lg shadow-blue-500/30 transition-all hover:bg-blue-700 hover:-translate-y-1 active:scale-95"
+              >
+                Entrar
+              </button>
+            </div>
+            <p class="text-center text-sm text-slate-500">
+              ¿No tienes cuenta?
+              <a
+                href="../registro/register.html"
+                class="font-bold text-blue-600 hover:underline"
+                >Regístrate</a
+              >
+            </p>
+            <p
+              class="text-center text-sm text-slate-500 mt-25"
+              id="version"
+            ></p>
+          </div>
+        </form>
+      </div>
+    </main>
+    <script type="module" src="../../js/login/login.js"></script>
+    <script type="module" src="../../js/hash/hash.js"></script>
+    <script type="module" src="../../js/dashboard/dashboard.js"></script>
+    <script type="module" src="../../js/dark/dark.js"></script>
+    <script src="../../js/UI/backgroundDinamic.js"></script>
+    <script type="module" src="../../js/UI/loand.js"></script>
+  </body>
+</html>

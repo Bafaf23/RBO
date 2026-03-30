@@ -167,7 +167,12 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
   enlacesMovil.forEach((enlace) => {
     if (enlace.getAttribute(`href`) === urlActual) {
-      enlace.classList.add(`active`);
+      enlace.classList.add(
+        `bg-white/20`,
+        "backdrop-blur-2xl",
+        "border",
+        "border-white/20"
+      );
     }
   });
 

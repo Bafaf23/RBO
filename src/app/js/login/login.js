@@ -67,3 +67,21 @@ btnMostarPass.addEventListener(`click`, () => {
     passInput.type = `password`;
   }
 });
+
+async function cargarVersionDeLaApp() {
+  try {
+    // ✅ PIDE LA RUTA QUE CREASTE EN EL SERVER.JS
+    const response = await fetch("/api/version");
+    const data = await response.json();
+
+    const versionSpan = document.getElementById("version");
+    if (versionSpan) {
+      versionSpan.innerText = `v${data.version}`;
+    }
+  } catch (err) {
+    console.error("Error conectando con el servidor:", err);
+  }
+}
+
+// Llama a la función al cargar el script
+cargarVersionDeLaApp();

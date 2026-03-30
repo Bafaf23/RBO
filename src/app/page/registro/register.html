@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--fontawesome CDN  -->
+    <script
+      src="https://kit.fontawesome.com/a74559d35e.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- CSS animation -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../../output.css" />
+    <title>RBO | Registro</title>
+  </head>
+  <body>
+    <!-- loandig-->
+    <div
+      id="loader"
+      class="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-slate-50 transition-opacity duration-500"
+    >
+      <div class="relative flex h-20 w-20 items-center justify-center">
+        <div
+          class="absolute h-full w-full animate-spin rounded-full border-4 border-slate-200 border-t-indigo-600"
+        ></div>
+
+        <span class="text-xl font-black text-blue-600">R</span>
+      </div>
+
+      <h2
+        class="mt-4 text-sm font-bold tracking-widest text-slate-500 uppercase animate-pulse"
+      >
+        Cargando RBO
+      </h2>
+    </div>
+
+    <main id="appContent" class="invisible transition-opacity duration-500">
+      <div
+        class="min-h-screen flex justify-center md:justify-end p-4 md:p-8 transition-all duration-100 ease-in-out"
+        id="display"
+      >
+        <div id="alert"></div>
+        <form
+          action="#"
+          class="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl flex flex-1 flex-col"
+        >
+          <div class="text-center mb-8">
+            <a href="../../index.html" class="inline-block">
+              <h2 class="text-3xl font-bold text-slate-800">
+                RB<span class="text-blue-600">O</span>
+              </h2>
+            </a>
+          </div>
+
+          <div class="space-y-4 md:h-full">
+            <h2 class="text-2xl font-bold text-slate-700">Registrate</h2>
+            <!-- grupo 1 -->
+            <div class="grid grid-cols-2 gap-3">
+              <div class="">
+                <label for="" class="text-sm font-semibold text-slate-600 ml-1"
+                  >Nombre</label
+                >
+                <input
+                  type="text"
+                  placeholder="Marcos"
+                  id="nameRegister"
+                  class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+                  placeholder="correo@ejemplo.com"
+                />
+              </div>
+              <div>
+                <label for="" class="text-sm font-semibold text-slate-600 ml-1"
+                  >Apellido</label
+                >
+                <input
+                  type="text"
+                  placeholder="Peréz"
+                  id="lastNameRegister"
+                  class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+                  placeholder="correo@ejemplo.com"
+                />
+              </div>
+            </div>
+            <!-- email -->
+            <div>
+              <label for="" class="text-sm font-semibold text-slate-600 ml-1"
+                >Email</label
+              >
+              <input
+                type="email"
+                name=""
+                id="emailRegister"
+                placeholder="correo@ejemplo.com"
+                class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+              />
+            </div>
+            <!-- pass -->
+            <div class="grid grid-cols-2 gap-3">
+              <div class="relative">
+                <label for="" class="text-sm font-semibold text-slate-600 ml-1"
+                  >Contrasena</label
+                >
+                <input
+                  type="password"
+                  name=""
+                  id="passwordRegister"
+                  placeholder="********"
+                  class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+                />
+                <span
+                  class="absolute right-4 top-[65%] -translate-y-1/2 cursor-pointer text-slate-400 hover:text-blue-600 transition-colors"
+                  id="mostarPass"
+                  ><i class="fa-regular fa-eye"></i
+                ></span>
+              </div>
+              <div class="relative">
+                <label for="" class="text-sm font-semibold text-slate-600 ml-1"
+                  >Repite tu contrasena</label
+                >
+                <input
+                  type="password"
+                  name=""
+                  id="passwordRegister2"
+                  placeholder="********"
+                  class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+                />
+                <span
+                  class="absolute right-4 top-[65%] -translate-y-1/2 cursor-pointer text-slate-400 hover:text-blue-600 transition-colors"
+                  id="mostarPass"
+                  ><i class="fa-regular fa-eye"></i
+                ></span>
+              </div>
+            </div>
+            <!-- caracteristicas de la pass -->
+            <div
+              class="bg-amber-50 text-sm flex items-center rounded-2xl p-2 justify-evenly"
+            >
+              <span class="text-3xl text-amber-600">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </span>
+              <div class="space-y-1">
+                <p class="text-slate-600">La contrasena debe tener:</p>
+                <ul class="italic text-slate-700">
+                  <li>
+                    Un caracter especial <span class="font-bold">!@#$%^&*</span>
+                  </li>
+                  <li class="font-bold">una minúscula y una mayúscula</li>
+                  <li>Debe ser <span class="font-bold">alfa numerica</span></li>
+                  <li>
+                    Una longuitud de<span class="font-bold"> 8 a 16 </span
+                    >caracteres
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <button
+                class="w-full rounded-xl bg-blue-600 py-4 font-bold text-white shadow-lg shadow-blue-500/30 transition-all hover:bg-blue-700 hover:-translate-y-1 active:scale-95"
+                type="submit"
+                id="register"
+              >
+                Registarme
+              </button>
+            </div>
+            <p class="text-center text-sm text-slate-500">
+              Ya tienes cuenta?,
+              <a
+                href="../login/login.html"
+                class="font-bold text-blue-600 hover:underline"
+                >inicia secion</a
+              >
+            </p>
+            <p class="text-center text-sm text-slate-500" id="version"></p>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <script type="module" src="../../js/register/register.js"></script>
+    <script type="module" src="../../js/hash/hash.js"></script>
+    <script type="module" src="../../js/regex/regex.js"></script>
+    <script type="module" src="../../js/dark/dark.js"></script>
+    <script src="../../js/UI/backgroundDinamic.js"></script>
+    <script src="../../js/UI/loand.js"></script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "name": "rebus",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./src/global.css -o ./src/app/output.css --watch",
+    "server": "node app.js",
+    "dev": "concurrently \"npm run tailwind\" \"npm run server\""
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.2",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^17.3.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "tailwindcss": "^4.2.2"
+  },
+  "description": "La mejor forma de llevar tus finanzas y tener control sobros tus ingresos y egresos.",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bafaf23/RBO.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Bafaf23/RBO/issues"
+  },
+  "homepage": "https://github.com/Bafaf23/RBO#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

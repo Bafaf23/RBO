@@ -27,7 +27,6 @@ export function mesassege(mensaje, titel) {
   }, 4000);
 }
 
-/* aray donde amacenaremos a los usuarios */
 let registerData = JSON.parse(localStorage.getItem("dataUsers")) || [];
 
 if (register) {
@@ -38,6 +37,7 @@ if (register) {
     const lastName = document.getElementById("lastNameRegister");
     const email = document.getElementById("emailRegister");
     const passwod = document.getElementById("passwordRegister");
+    const passConfi = document.getElementById("passwordRegister2");
 
     let rawPassword = passwod.value.trim();
     let rawLastName = lastName.value.trim();
@@ -67,6 +67,9 @@ if (register) {
         "warning"
       );
     }
+
+    if (passwod !== passConfi)
+      return alertaZen("Opss!", "verifica la contrasena", "warning");
 
     const exiteEmial = registerData.some(
       (usuario) => usuario.email === rawEmail
@@ -113,25 +116,8 @@ if (register) {
   });
 }
 
-window.addEventListener(`load`, () => {
-  const fondos = [
-    `https://lagranaldea.com/wp-content/uploads/2021/04/21-04-2021-CCS.jpg`,
-    `https://images.unsplash.com/photo-1714594923299-e915b7d71701?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FyYWNhc3xlbnwwfHwwfHx8MA%3D%3D`,
-    `https://images.pexels.com/photos/4148187/pexels-photo-4148187.jpeg?cs=srgb&dl=pexels-walcouyi-4148187.jpg&fm=jpg`,
-    `https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1nfGVufDB8fDB8fHww`,
-    `https://walpaper.es/wallpaper/2017/04/imagenes-de-paisajes-relajantes.jpg`,
-  ];
-
-  let fondoRando = Math.floor(Math.random() * fondos.length);
-  const fondoSelct = fondos[fondoRando];
-
-  let pantalla = document.querySelector(".content-form ");
-  pantalla.style.backgroundImage = `url(${fondoSelct})`;
-  pantalla.style.backgroundSize = "cover";
-  pantalla.style.backgroundAttachment = "fixed";
-});
-
 const btnMostarPass = document.getElementById("mostarPass");
+
 if (btnMostarPass) {
   btnMostarPass.addEventListener(`click`, () => {
     const passInput = document.getElementById("passwordRegister");
@@ -144,3 +130,18 @@ if (btnMostarPass) {
     }
   });
 }
+
+async function cargarVersionDeLaApp() {
+  try {
+    const response = await fetch("/api/version");
+    const data = await response.json();
+
+    const versionSpan = document.getElementById("version");
+    if (versionSpan) {
+      versionSpan.innerText = `v${data.version}`;
+    }
+  } catch (err) {
+    console.error("Error conectando con el servidor:", err);
+  }
+}
+cargarVersionDeLaApp();

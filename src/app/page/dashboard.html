@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--fontawesome CDN  -->
+    <script
+      src="https://kit.fontawesome.com/a74559d35e.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- CSS animation -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Css externo -->
+    <link rel="stylesheet" href="../output.css" />
+
+    <link rel="icon" href="../asset/img/RBO.png" />
+    <title>RBO | Dashboard</title>
+  </head>
+  <body>
+    <div class="absolute top-0 left-0 w-full overflow-hidden -z-1">
+      <svg
+        class="relative block w-[calc(200% + 1.3px)] h-[350px] rotate-y-180"
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
+          class="shape-fill fill-primary"
+        ></path>
+      </svg>
+    </div>
+
+    <div class="flex min-h-screen">
+      <!-- menu desktop -->
+      <aside
+        class="hidden md:flex flex-col w-74 h-screen sticky top-0 bg-white border-r border-slate-100 shadow-sm"
+      >
+        <nav class="flex flex-col h-full p-6">
+          <div class="mb-10 flex flex-col items-center text-center">
+            <a
+              href="perfil/perfil.html"
+              id="userDesktop"
+              class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold text-xl mb-2 hover:scale-105 transition-transform p-10"
+            >
+            </a>
+            <p
+              id="isAdmin"
+              class="text-[10px] font-black uppercase tracking-widest text-cyan-600 bg-cyan-50 px-2 py-0.5 rounded-full"
+            ></p>
+          </div>
+
+          <ul class="flex-1 space-y-2">
+            <li>
+              <a
+                href="dashboard.html"
+                class="link group flex items-center gap-3 p-3 rounded-xl transition-all hover:bg-slate-50 text-slate-600 hover:text-primary"
+              >
+                <span
+                  class="w-8 h-8 flex items-center justify-center rounded-lg bg-slate-50 group-hover:bg-primary/10"
+                >
+                  <i class="fa-solid fa-money-bill"></i>
+                </span>
+                <span class="font-bold text-sm">Balance</span>
+              </a>
+            </li>
+
+            <li>
+              <button
+                id="openModalIngreso"
+                class="link group w-full flex items-center gap-3 p-3 rounded-xl transition-all hover:bg-emerald-50 text-slate-600 hover:text-emerald-600"
+              >
+                <span
+                  class="w-8 h-8 flex items-center justify-center rounded-lg bg-slate-50 group-hover:bg-emerald-100"
+                >
+                  <i class="fa-solid fa-angle-up"></i>
+                </span>
+                <span class="font-bold text-sm">Ingreso</span>
+              </button>
+            </li>
+
+            <li>
+              <button
+                id="openModalEgreso"
+                class="link group w-full flex items-center gap-3 p-3 rounded-xl transition-all hover:bg-rose-50 text-slate-600 hover:text-rose-600"
+              >
+                <span
+                  class="w-8 h-8 flex items-center justify-center rounded-lg bg-slate-50 group-hover:bg-rose-100"
+                >
+                  <i class="fa-solid fa-angle-down"></i>
+                </span>
+                <span class="font-bold text-sm">Egreso</span>
+              </button>
+            </li>
+
+            <li>
+              <a
+                href="admin/dashboard-admin.html"
+                id="pnAdmi"
+                class="flex items-center gap-3 p-3 rounded-xl transition-all hover:bg-amber-50 text-slate-600 hover:text-amber-600"
+              >
+                <span
+                  class="w-8 h-8 flex items-center justify-center rounded-lg bg-slate-50 group-hover:bg-amber-100"
+                >
+                  <i class="fa-solid fa-wrench"></i>
+                </span>
+                <span class="font-bold text-sm">Admin</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="mt-auto border-t border-slate-50 pt-6">
+            <button
+              id="logoutBtnDes"
+              class="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-rose-50 text-rose-600 font-bold text-sm hover:bg-rose-600 hover:text-white transition-all"
+            >
+              <i class="fa-solid fa-right-from-bracket"></i>
+              Salir
+            </button>
+          </div>
+        </nav>
+      </aside>
+
+      <div class="w-full md:pl-15 md:pr-15">
+        <header class="flex flex-col p-5">
+          <!-- contenedor de logo -->
+          <div class="text-center mb-2">
+            <a href="#" class="inline-block">
+              <h2 class="text-4xl font-bold text-slate-300">
+                RB<span class="text-blue-600">O</span>
+              </h2>
+            </a>
+          </div>
+          <!-- Btn  -->
+          <div class="inline-flex justify-between md:hidden lg:hidden">
+            <button class="themeSelector btn-toggle text-xl text-purple-700">
+              <i id="theme-toggle-light-icon" class="fa-solid fa-sun dark"></i>
+              <i id="theme-toggle-dark-icon" class="fa-solid fa-moon"></i>
+            </button>
+            <button id="logoutBtn" class="text-xl text-amber-400">
+              Salir
+              <span>
+                <i class="fa-solid fa-right-from-bracket"></i>
+              </span>
+            </button>
+          </div>
+        </header>
+        <main class="animate__animated animate__fadeInUp flex flex-col gap-3">
+          <!-- welcome -->
+          <section
+            class="justify-between items-center p-3 md:hidden lg:hidden inline-flex"
+          >
+            <a
+              href="perfil/perfil.html"
+              class="group transition-transform hover:scale-105"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="bg-cyan-500/30 backdrop-blur-md rounded-full w-14 h-14 flex justify-center items-center border border-white/30 shadow-lg"
+                >
+                  <span
+                    class="text-white font-black text-xl uppercase"
+                    id="avatar"
+                  ></span>
+                </div>
+
+                <div class="flex flex-col">
+                  <span
+                    class="text-cyan-200 text-xs font-bold uppercase tracking-widest"
+                    >Bienvenido de nuevo</span
+                  >
+                  <h1
+                    id="welcome"
+                    class="text-3xl text-white font-black tracking-tight"
+                  ></h1>
+                </div>
+              </div>
+            </a>
+          </section>
+          <!-- productos -->
+          <section class="space-y-1 p-3">
+            <!-- titulo del contenedor -->
+            <h2 class="text-2xl font-bold text-white">Porductos</h2>
+            <!-- productos -->
+            <div
+              class="bg-white/80 backdrop-blur-md border border-slate-200 shadow-macos rounded-[12px] p-6"
+            >
+              <h2
+                class="text-slate-700 text-sm font-bold uppercase tracking-wider"
+              >
+                Saldo Total
+              </h2>
+              <div class="flex items-baseline gap-2 mt-2">
+                <span class="text-3xl font-black text-blue-500" id="saldo"
+                  >0.00</span
+                >
+                <span class="text-slate-400 font-bold">Bs</span>
+              </div>
+            </div>
+          </section>
+          <!-- Menu movil -->
+          <nav
+            class="w-full bg-primary border-t border-white/10 pb-safe nav-movil block md:hidden lg:hidden"
+          >
+            <ul class="flex justify-around items-center h-16">
+              <a
+                href="dashboard.html"
+                class="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors p-1 rounded-md"
+              >
+                <i class="fa-solid fa-money-bill text-xl"></i>
+                <span class="text-md font-medium uppercase tracking-tighter"
+                  >Balance</span
+                >
+              </a>
+              <a
+                href="#"
+                id="openModalIngresoMovil"
+                class="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors"
+              >
+                <i class="fa-solid fa-angle-up text-xl text-emerald-400"></i>
+                <span class="text-md font-medium uppercase tracking-tighter"
+                  >Ingreso</span
+                >
+              </a>
+              <a
+                href="#"
+                id="openModalEgresoMovil"
+                class="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors"
+              >
+                <i class="fa-solid fa-angle-down text-xl text-rose-400"></i>
+                <span class="text-md font-medium uppercase tracking-tighter"
+                  >Egreso</span
+                >
+              </a>
+              <a
+                href="#"
+                class="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors"
+              >
+                <i class="fa-solid fa-money-bill-transfer text-xl"></i>
+                <span class="text-md font-medium uppercase tracking-tighter"
+                  >Deuda</span
+                >
+              </a>
+            </ul>
+          </nav>
+          <!-- hitorial -->
+          <section class="p-4">
+            <h2 class="text-2xl font-black text-slate-800 mb-4 ml-1">
+              Transacciones
+            </h2>
+            <div class="flex flex-col gap-3" id="historial">
+              <!-- card -->
+              <!-- <div class="card-historial egreso">
+                  <div class="historial-info">
+                    <h3>Nombre del comercio</h3>
+                    <span>12/01/2025</span>
+                  </div>
+                  <div class="historial-monto">
+                    <div id="monto">
+                      <span>-</span>
+                      100.00
+                    </div>
+                    <sup>Bs</sup>
+                  </div>
+                </div> -->
+              <!--                 <div class="card-historial ingreso">
+                  <div class="historial-info">
+                    <h3>Nombre del comercio</h3>
+                    <span>12/01/2025</span>
+                  </div>
+                  <div class="historial-monto">
+                    <div id="monto">
+                      <span>+</span>
+                      100.00
+                    </div>
+                    <sup>Bs</sup>
+                  </div>
+                </div> -->
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <!-- modal -->
+      <!-- Estructura de la Modal -->
+      <!-- modal egreso -->
+      <div id="miModal" class="hidden">
+        <div class="modal-content">
+          <span class="close-btn">&times;</span>
+          <h2>Registro de ingresos</h2>
+          <form id="registroForm" class="form-zen">
+            <div class="input-group">
+              <label for="nombre">Monto</label>
+              <input
+                type="number"
+                id="monto"
+                step="0.01"
+                min="0"
+                placeholder="Ej. 1.00"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <label for="nombre">Fecha de la operacion</label>
+              <input type="date" id="fecha" required />
+            </div>
+            <div class="input-group">
+              <label for="apellido">Seleciona una categoria</label>
+              <div class="select-wrapper">
+                <select name="categoria" id="cargo" required>
+                  <option value="Sueldo-salarios">Sueldo y salario</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn-registro" id="ingreso">Registrar</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- modal -->
+      <!-- Estructura de la Modal -->
+      <!-- modal ingreso -->
+      <div id="miModalEgreso" class="hidden">
+        <div class="modal-content">
+          <span class="close-btn">&times;</span>
+          <h2>Registro de egresos</h2>
+          <form id="registroForm" class="form-zen">
+            <div class="input-group">
+              <label for="nombre">Monto</label>
+              <input
+                type="number"
+                id="montoEgreso"
+                step="0.01"
+                min="0"
+                placeholder="Ej. 1.00"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <label for="nombre">Fecha de la operacion</label>
+              <input type="date" id="fechaEgreso" required />
+            </div>
+            <div class="input-group">
+              <label for="apellido">Seleciona una categoria</label>
+              <div class="select-wrapper">
+                <select name="categoria" id="cargoEgreso" required>
+                  <option value="Comida">Comida</option>
+                  <option value="Osio">Osio</option>
+                  <option value="Netflix">Netflix</option>
+                  <option value="Internet">Internet</option>
+                  <option value="Gas">Gas</option>
+                  <option value="Agua">Agua</option>
+                  <option value="Electricidad">Electricidad</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn-registro" id="egreso">Registrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="../js/dark/dark.js"></script>
+    <script type="module" src="../js/dashboard/ingreso.js"></script>
+    <script type="module" src="../js/dashboard/dashboard.js"></script>
+    <script type="module" src="../js/dashboard/egreso.js"></script>
+    <script type="module" src="../js/SweetAlert/alert.js"></script>
+    <script type="module" src="../js/api/dolarApi.js"></script>
+  </body>
+</html>

@@ -2,18 +2,17 @@
 .vscode
 node_modules
 python
-package-lock.json
-package.json
 
 #js no nesesarios
-js/deuda.js
-js/egreso.js
-js/index.js
-js/ingreso.js
+src/app/js/deuda.js
+src/app/js/egreso.js
+src/app/js/index.js
+src/app/js/ingreso.js
 
 #archivos html sin terminar
-page/deuda.html
-page/egreso.html
-page/ingreso.html
+src/app/page/deuda.html
+src/app/page/egreso.html
+src/app/page/ingreso.html
 
 Final-JS-Porject.txt
+.env*
