@@ -17,7 +17,7 @@
     <!-- Css externo -->
     <link rel="stylesheet" href="../output.css" />
 
-    <link rel="icon" href="../asset/img/RBO.png" />
+    <link rel="icon" href="../asset/img/favico.ico" />
     <title>RBO | Dashboard</title>
   </head>
   <body>
@@ -289,36 +289,82 @@
       <!-- modal -->
       <!-- Estructura de la Modal -->
       <!-- modal egreso -->
-      <div id="miModal" class="hidden">
-        <div class="modal-content">
-          <span class="close-btn">&times;</span>
-          <h2>Registro de ingresos</h2>
-          <form id="registroForm" class="form-zen">
-            <div class="input-group">
-              <label for="nombre">Monto</label>
+      <div
+        id="miModal"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-primary/40 backdrop-blur-sm p-4 animate__animated animate__fadeIn"
+      >
+        <div
+          class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden animate__animated animate__zoomIn"
+        >
+          <div
+            class="flex justify-between items-center p-6 border-b border-slate-100"
+          >
+            <h2 class="text-xl font-black text-slate-800">
+              Registro de Ingresos
+            </h2>
+            <button
+              class="close-btn text-slate-400 hover:text-rose-500 transition-colors text-2xl"
+            >
+              &times;
+            </button>
+          </div>
+          <form id="registroForm" class="p-6 space-y-4">
+            <div class="flex flex-col gap-1">
+              <label
+                for="nombre"
+                class="text-xs font-bold text-slate-500 uppercase ml-1"
+                >Monto (Bs)</label
+              >
               <input
                 type="number"
                 id="monto"
                 step="0.01"
                 min="0"
-                placeholder="Ej. 1.00"
+                placeholder="0.00"
+                class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-bold text-lg"
                 required
               />
             </div>
-            <div class="input-group">
-              <label for="nombre">Fecha de la operacion</label>
-              <input type="date" id="fecha" required />
+            <div class="flex flex-col gap-1">
+              <label
+                for="nombre"
+                class="text-xs font-bold text-slate-500 uppercase ml-1"
+                >Fecha de la operación</label
+              >
+              <input
+                type="date"
+                id="fecha"
+                class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                required
+              />
             </div>
-            <div class="input-group">
-              <label for="apellido">Seleciona una categoria</label>
-              <div class="select-wrapper">
-                <select name="categoria" id="cargo" required>
-                  <option value="Sueldo-salarios">Sueldo y salario</option>
+            <div class="flex flex-col gap-1">
+              <label class="text-xs font-bold text-slate-500 uppercase ml-1"
+                >Seleciona una categoria</label
+              >
+              <div class="relative">
+                <select
+                  name="categoria"
+                  id="cargo"
+                  class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl appearance-none focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all cursor-pointer"
+                  required
+                >
+                  <option value="Sueldo">Sueldo y salario</option>
                   <option value="otro">Otro</option>
                 </select>
+                <div
+                  class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400"
+                >
+                  <i class="fa-solid fa-chevron-down text-xs"></i>
+                </div>
               </div>
             </div>
-            <button class="btn-registro" id="ingreso">Registrar</button>
+            <button
+              id="ingreso"
+              class="w-full bg-primary text-white font-black p-4 rounded-2xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all mt-4"
+            >
+              Registrar
+            </button>
           </form>
         </div>
       </div>
