@@ -1,10 +1,8 @@
-import { hashPassaword } from "../hash/hash.js";
-import { validacionInput, emailPattern, passPattern } from "../regex/regex.js";
-import { alertaZen } from "../SweetAlert/alert.js";
+import { hashPassaword } from "../utils/hash.js";
+import { validacionInput, PATTERNS } from "../utils/regex.js";
 import { showIOSNotification } from "../UI/showIOSNotification.js";
 
 /* accediendo a los elementos el DOM */
-const contentAlert = document.getElementById("alert");
 const register = document.getElementById("register");
 
 let registerData = JSON.parse(localStorage.getItem("dataUsers")) || [];
@@ -37,14 +35,14 @@ if (register) {
       );
     }
 
-    if (!validacionInput(rawEmail, emailPattern)) {
+    if (!validacionInput(rawEmail, PATTERNS.EMAIL)) {
       return showIOSNotification(
         `Opss!`,
         `El formato de la emial no es valido`,
         `warning`
       );
     }
-    if (!validacionInput(rawPassword, passPattern)) {
+    if (!validacionInput(rawPassword, PATTERNS.PASS)) {
       return showIOSNotification(
         `Opsss!`,
         `La comtraseña no comple con los requisitos`,

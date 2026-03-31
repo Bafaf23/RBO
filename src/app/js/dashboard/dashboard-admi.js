@@ -37,7 +37,7 @@ const totaAdmin = document.getElementById("total-admins");
 nameAdmin.textContent = `Hola, ${user.name}`;
 
 //llamando al precio del dolar
-getData(`https://ve.dolarapi.com/v1/dolares/oficial`).then((data) => {
+getData().then((data) => {
   renderDolar(data);
 });
 

@@ -1,13 +1,12 @@
 /**
- * Notification of style IOS
+ * Muestra una notificación con estética de iOS.
  *
- * @param {string} mensaje
- * @param {string} titulo
- * @param {string} [tipo="exito"] - exito, error, info
- *
- * @returns {Node}
- *
+ * @param {string} titulo - El encabezado en negrita de la notificación.
+ * @param {string} mensaje - El cuerpo del texto (se trunca si es muy largo).
+ * @param {"exito" | "error" | "info"} [tipo="exito"] - Define el icono y color.
+ * @returns {void}
  */
+
 export function showIOSNotification(titulo, mensaje, tipo = "exito") {
   const container = document.getElementById("notification-container");
 
