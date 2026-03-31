@@ -1,4 +1,9 @@
-// /api/version.js (SERVIDOR)
+/**
+ * Pide la version de la app
+ *
+ * @param {string} req
+ * @param {string} res
+ */
 export const getVersion = (req, res) => {
   console.log("Petición recibida en la API");
   res.json({
