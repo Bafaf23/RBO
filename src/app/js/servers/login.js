@@ -1,5 +1,5 @@
-import { hashPassaword } from "../hash/hash.js";
-import { validacionInput, emailPattern } from "../regex/regex.js";
+import { hashPassaword } from "../utils/hash.js";
+import { validacionInput, PATTERNS } from "../utils/regex.js";
 import { showIOSNotification } from "../UI/showIOSNotification.js";
 
 let userData = JSON.parse(localStorage.getItem("dataUsers")) || [];
@@ -31,7 +31,7 @@ if (loginbtn) {
     //buscando al usurio por el emal
     const user = userData.find((u) => u.email === emial);
 
-    if (!validacionInput(emial, emailPattern)) {
+    if (!validacionInput(emial, PATTERNS.EMAIL)) {
       showIOSNotification(
         "Formato",
         "El correo ingresado es incorrecto",
@@ -42,8 +42,8 @@ if (loginbtn) {
     //comoprovaciones
     if (!user)
       return showIOSNotification(
-        "Correo registrado",
-        "El correo ya esta registrado",
+        "Desconocido",
+        "El correo ingresado no esta registrado.",
         "info"
       );
 
@@ -54,8 +54,8 @@ if (loginbtn) {
       }, 2000);
     } else {
       showIOSNotification(
-        `Datos errados`,
-        `Usuario o contraseña incorrectos.`,
+        `Error`,
+        `El usuario o la calve no son correctas.`,
         `error`
       );
     }
