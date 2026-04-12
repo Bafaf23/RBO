@@ -1,4 +1,12 @@
 export function backdropDinamic() {
+  let pantalla = document.getElementById("display");
+
+  if (!pantalla) {
+    console.log(
+      "Background dinámico omitido: No se detectó el contenedor 'display'.",
+    );
+    return;
+  }
   // Imagenes dinamicas
   const fondos = [
     `https://lagranaldea.com/wp-content/uploads/2021/04/21-04-2021-CCS.jpg`,
@@ -15,7 +23,6 @@ export function backdropDinamic() {
 
   if (!mainContent) return;
 
-  let pantalla = document.getElementById("display");
   pantalla.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${fondoSelct})`;
   pantalla.style.backgroundSize = "cover";
   pantalla.style.backgroundPosition = "center";
@@ -41,5 +48,3 @@ export function backdropDinamic() {
     loader.style.display = "none";
   }, 600);
 }
-
-backdropDinamic();

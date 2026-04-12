@@ -4,6 +4,7 @@
  * @returns {void}
  * Manipulacion del DOM
  */
+
 export function load() {
   const loader = document.getElementById("loader");
   const appContent = document.getElementById("appContent");
@@ -17,4 +18,3 @@ export function load() {
     loader.remove();
   }, 500);
 }
-load();

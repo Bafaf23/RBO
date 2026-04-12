@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -61,7 +61,7 @@
       class="fixed top-5 right-5 z-9999 flex flex-col gap-3 pointer-events-none"
     ></div>
 
-    <div class="flex min-h-screen" id="appContent">
+    <div class="flex min-h-screen invisible" id="appContent">
       <!-- menu desktop -->
       <aside
         class="hidden md:flex flex-col w-90 h-screen sticky top-0 bg-white border-r border-slate-100 shadow-sm"
@@ -313,7 +313,7 @@
 
       <!-- modal -->
       <!-- Estructura de la Modal -->
-      <!-- modal egreso -->
+      <!-- modal ingreso -->
       <div
         id="miModal"
         class="fixed inset-0 z-50 hidden items-center justify-center bg-primary/40 backdrop-blur-sm p-4 animate__animated animate__fadeIn"
@@ -396,7 +396,7 @@
 
       <!-- modal -->
       <!-- Estructura de la Modal -->
-      <!-- modal ingreso -->
+      <!-- modal egresos -->
       <div
         id="miModalEgreso"
         class="fixed inset-0 z-50 hidden items-center justify-center bg-primary/40 backdrop-blur-sm p-4 animate__animated animate__fadeIn"
@@ -482,12 +482,9 @@
         </div>
       </div>
     </div>
-    <script type="module" src="../js/dark/dark.js"></script>
-    <script type="module" src="../js/dashboard/ingreso.js"></script>
     <script type="module" src="../js/dashboard/dashboard.js"></script>
-    <script type="module" src="../js/dashboard/egreso.js"></script>
-    <script type="module" src="../js/SweetAlert/alert.js"></script>
-    <script type="module" src="../js/api/dolarApi.js"></script>
-    <script src="../js/UI/loand.js"></script>
+    <script type="module" src="../js/UI/showIOSNotification.js"></script>
+    <script type="module" src="../js/utils/egreso.js"></script>
+    <script type="module" src="../js/index.js"></script>
   </body>
 </html>

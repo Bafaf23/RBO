@@ -1,5 +1,4 @@
-import { alertaZen } from "../SweetAlert/alert.js";
-import { renderHistorial, saldo } from "./ingreso.js";
+import { renderHistorial, saldo } from "./addTrans.js";
 
 const btnModal = document.getElementById("openModalEgreso");
 const btnModalMovil = document.getElementById("openModalEgresoMovil");

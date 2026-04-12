@@ -24,7 +24,7 @@ if (loginbtn) {
       return showIOSNotification(
         "Campos vacios",
         "Los campos no pueden estar vacios.",
-        "error"
+        "error",
       );
     }
 
@@ -35,7 +35,7 @@ if (loginbtn) {
       showIOSNotification(
         "Formato",
         "El correo ingresado es incorrecto",
-        "error"
+        "error",
       );
     }
 
@@ -44,7 +44,7 @@ if (loginbtn) {
       return showIOSNotification(
         "Desconocido",
         "El correo ingresado no esta registrado.",
-        "info"
+        "info",
       );
 
     if (user && user.passwod === passawordSegura) {
@@ -56,7 +56,7 @@ if (loginbtn) {
       showIOSNotification(
         `Error`,
         `El usuario o la calve no son correctas.`,
-        `error`
+        `error`,
       );
     }
   });
@@ -77,7 +77,6 @@ btnMostarPass.addEventListener(`click`, () => {
 
 async function cargarVersionDeLaApp() {
   try {
-    // ✅ PIDE LA RUTA QUE CREASTE EN EL SERVER.JS
     const response = await fetch("/api/version");
     const data = await response.json();
 

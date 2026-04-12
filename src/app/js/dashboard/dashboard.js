@@ -1,28 +1,17 @@
-import { getData } from "../api/dolarApi.js";
+import { addTrans } from "../utils/addTrans.js";
 
-const helloUser = document.getElementById("welcome");
-const userDestok = document.getElementById("userDesktop");
-const avatar = document.getElementById("avatar");
-const dolar = document.getElementById("dolar");
-const typeUser = document.getElementById("isAdmin");
-const linkAdmin = document.getElementById("pnAdmi");
-const btnPanel = document.getElementById("pcMovil");
-
-//cerrar secion
-const logoutBtn = document.getElementById("logoutBtn");
-const logoutBtnDes = document.getElementById("logoutBtnDes");
+let user = JSON.parse(localStorage.getItem("userSession"));
 
 /** funcion control de acceso
  *
- * @function{function} checkAcces
+ *
  */
 (function checkAccess() {
-  const session = JSON.parse(localStorage.getItem("userSession"));
   const pathname = window.location.pathname;
 
   const isPageLogin = pathname.includes(`login.html`) || pathname.endsWith("/");
 
-  if (!session) {
+  if (!user) {
     if (!isPageLogin) {
       // Si no hay sesión, volver al login
       window.location.href = "../../page/login.html";
@@ -34,6 +23,20 @@ const logoutBtnDes = document.getElementById("logoutBtnDes");
     }
   }
 })();
+
+if (!user) throw new Error("No hay sesión activa");
+
+const helloUser = document.getElementById("welcome");
+const userDestok = document.getElementById("userDesktop");
+const avatar = document.getElementById("avatar");
+/* const dolar = document.getElementById("dolar"); */
+const typeUser = document.getElementById("isAdmin");
+const linkAdmin = document.getElementById("pnAdmi");
+const btnPanel = document.getElementById("pcMovil");
+
+//cerrar secion
+const logoutBtn = document.getElementById("logoutBtn");
+const logoutBtnDes = document.getElementById("logoutBtnDes");
 
 //cerrar seccion movil
 if (logoutBtn) {
@@ -51,7 +54,6 @@ if (logoutBtnDes) {
   });
 }
 
-let user = JSON.parse(localStorage.getItem("userSession"));
 let nameUser = user.name;
 
 //Saludar al usurio
@@ -90,9 +92,9 @@ export function getAvatar(nameUser) {
 }
 
 //llamndo a dolarApi para mostar precio del dolar BCV
-getData("https://ve.dolarapi.com/v1/dolares/oficial").then((data) => {
+/* getData("https://ve.dolarapi.com/v1/dolares/oficial").then((data) => {
   renderDolar(data);
-});
+}); */
 
 /**
  * funcion para renderisar el precio del dolar
@@ -150,6 +152,18 @@ if (modal) {
       modal.style.display = `none`;
     }
   };
+
+  const btnGuardar = document.getElementById("ingreso");
+  btnGuardar.addEventListener("click", (e) => {
+    const data = {
+      monto: document.getElementById("monto").value,
+      tipo: "ingreso",
+      cargo: document.getElementById("cargo").value,
+      fecha: document.getElementById("fecha").value,
+    };
+
+    addTrans(e, data);
+  });
 }
 
 //===========================================================================
@@ -157,28 +171,36 @@ if (modal) {
 //===========================================================================
 
 document.addEventListener(`DOMContentLoaded`, () => {
-  const urlActual = window.location.pathname.split(`/`).pop();
+  // 1. Obtenemos la página actual (manejando el caso de "/" o index)
+  const urlActual =
+    window.location.pathname.split(`/`).pop() || "dashboard.html";
 
   const navMovil = document.querySelector(".nav-movil");
   const navDesktop = document.querySelector(".nav-desktop");
 
-  const enlacesMovil = navMovil.querySelectorAll(`ul a`);
-  const enlacesDes = navDesktop.querySelectorAll(`ul a`);
+  // 2. Solo ejecutamos si navMovil existe
+  if (navMovil) {
+    const enlacesMovil = navMovil.querySelectorAll(`ul a`);
+    enlacesMovil.forEach((enlace) => {
+      if (enlace.getAttribute(`href`) === urlActual) {
+        enlace.classList.add(
+          `bg-white/20`,
+          "backdrop-blur-2xl",
+          "border",
+          "border-white/20",
+        );
+      }
+    });
+  }
 
-  enlacesMovil.forEach((enlace) => {
-    if (enlace.getAttribute(`href`) === urlActual) {
-      enlace.classList.add(
-        `bg-white/20`,
-        "backdrop-blur-2xl",
-        "border",
-        "border-white/20"
-      );
-    }
-  });
-
-  enlacesDes.forEach((enlace) => {
-    if (enlace.getAttribute(`href`) === urlActual) {
-      enlace.classList.add(`active`);
-    }
-  });
+  // 3. Solo ejecutamos si navDesktop existe
+  if (navDesktop) {
+    const enlacesDes = navDesktop.querySelectorAll(`ul a`);
+    enlacesDes.forEach((enlace) => {
+      // Usamos includes por si la ruta tiene parámetros o carpetas
+      if (enlace.getAttribute(`href`) === urlActual) {
+        enlace.classList.add(`active`);
+      }
+    });
+  }
 });
