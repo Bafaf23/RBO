@@ -4,7 +4,7 @@ import Button from "@/components/atoms/Button";
 
 export default function Home() {
   return (
-    <>
+    <main className="w-full min-h-screen bg-zinc-200">
       <header
         id="nav"
         className="flex justify-between items-center px-6 py-4 fixed w-full top-0 z-50 transition-colors duration-75 ease-i"
@@ -128,6 +128,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }
