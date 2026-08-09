@@ -3,17 +3,35 @@
 import Link from "next/link";
 import Input from "@/components/atoms/Input";
 import Button from "../atoms/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { login } from "@/service/auth/login";
+import { useSesion } from "@/context/SesionContext";
 
 export default function FormLogin() {
   const [loading, setLoading] = useState(false);
+  // 1. Extraemos iniciarSesion del contexto
+  const { usuario, cargando, iniciarSesion } = useSesion();
   const [data, setData] = useState({
     email: "",
     pass: "",
   });
+
   const router = useRouter();
+
+  useEffect(() => {
+    if (usuario && !cargando) {
+      router.push("/dashboard");
+    }
+  }, [cargando, router, usuario]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -25,24 +43,32 @@ export default function FormLogin() {
 
     setLoading(true);
 
-    const response = await login(data);
+    try {
+      const response = await login(data);
 
-    if (response?.success === true) {
-      setLoading(false);
-      router.push("/dashboard");
-    } else {
-      alert(response.message);
+      if (response?.success === true) {
+        // Extraemos los datos del usuario (o la respuesta limpia)
+        const userData = response.data || response.user || response;
+
+        // 2. Actualizamos el estado global en React (esto guarda en sessionStorage y actualiza usuario)
+        if (typeof iniciarSesion === "function") {
+          iniciarSesion(userData);
+        } else {
+          sessionStorage.setItem("user", JSON.stringify(userData));
+        }
+
+        setLoading(false);
+        // 3. Redirigimos teniendo ya el estado 'usuario' activo
+        router.push("/dashboard");
+      } else {
+        alert(response?.message || "Ocurrió un error al iniciar sesión");
+        setLoading(false);
+      }
+    } catch (error) {
+      alert("Error de conexión al servidor");
       setLoading(false);
     }
   }
-
-  const handlChange = (e) => {
-    const { name, value } = e.target;
-    setData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
 
   return (
     <div className="space-y-6">
@@ -51,7 +77,7 @@ export default function FormLogin() {
           Bienvenido
         </h2>
         <p className="text-gray-400 font-bold text-sm">
-          Usa tus credenciales para ingresar al sistama
+          Usa tus credenciales para ingresar al sistema
         </p>
       </div>
 
@@ -65,7 +91,8 @@ export default function FormLogin() {
             Usuario
           </label>
           <Input
-            onChange={handlChange}
+            id="UserEmail"
+            onChange={handleChange}
             type="email"
             name="email"
             value={data.email || ""}
@@ -82,7 +109,8 @@ export default function FormLogin() {
             Contraseña
           </label>
           <Input
-            onChange={handlChange}
+            id="pasUser"
+            onChange={handleChange}
             value={data.pass || ""}
             name="pass"
             type="password"
@@ -98,14 +126,13 @@ export default function FormLogin() {
             hover="hover:bg-blue-700"
             disabled={loading}
           >
-            Entrar
+            {loading ? "Entrando..." : "Entrar"}
           </Button>
         </div>
 
         {/* Enlace de Registro */}
         <p className="text-center text-sm text-slate-500 pt-2">
           ¿No tienes cuenta?{" "}
-          {/* SE CORRIGIÓ: Cambiado por componente Link oficial de Next.js */}
           <Link
             href="/register"
             className="font-bold text-blue-600 hover:underline"

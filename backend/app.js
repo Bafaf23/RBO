@@ -1,8 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import userRouter from "./src/router/user.route.js";
 import authRouter from "./src/router/auth.route.js";
+import transactionRouter from "./src/router/transaction.route.js";
 
 dotenv.config();
 
@@ -10,6 +12,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(
   cors({
@@ -29,6 +32,7 @@ app.get("/", (_req, res) => {
 // rutas
 app.use("/user", userRouter);
 app.use("/auth", authRouter);
+app.use("/transaction", transactionRouter);
 
 if (process.env.NODE_ENV === "dev") {
   console.log("🛠️ Modo desarrollo: Mostrando errores detallados en consola.");

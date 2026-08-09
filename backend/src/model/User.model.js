@@ -20,6 +20,13 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    income: {
+      type: Number,
+    },
+    month: {
+      type: Date,
+      default: Date.now,
+    },
   },
   { timestamps: true },
 );
